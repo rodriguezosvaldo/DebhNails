@@ -1,0 +1,112 @@
+<!doctype html>
+<!--
+Fondo principal: #2B1D1B (Marrón cacao oscuro)
+Secciones destacadas / Fondo secundario: #3E2A26 (Marrón chocolate)
+Botones / Hovers: #D9A18A (Rosa terracota)
+Texto principal: #F5E8DD (Beige)
+Detalles decorativos / Resaltados: #E8CFC1 (Rosa palo) -->
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./script.js" defer></script>
+    <link href="./output.css" rel="stylesheet">
+    </head>
+    <body class="flex flex-col text-text bg-primary">
+        <header class="relative flex flex-row justify-center w-full h-[70vh] overflow-hidden ">
+            <img class="absolute left-10 top-5 w-30 h-30" src="/assets/logo.PNG" alt="Debh Nails logo">
+            <button class="w-20 h-10 z-10 fixed p-2 my-7 rounded-4xl hover:text-[#D9A18A] backdrop-blur-2xl">Booking</button>
+            <div class=" flex flex-col items-center fixed right-0 m-5 z-10">
+                <nav>
+                    <ul class="flex flex-row justify-around items-center w-90 h-10 p-2 my-2 rounded-4xl bg-transparent backdrop-blur-2xl">
+                        <li><a class="px-3 hover:text-[#D9A18A]">Home</a></li>
+                        <li><a class="px-3 hover:text-[#D9A18A]">Services</a></li>
+                        <li><a class="px-3 hover:text-[#D9A18A]">About Us</a></li>
+                    </ul>
+                </nav>
+                <ul class="flex flex-row justify-around items-center w-50 h-6 z-10 p-2 rounded-4xl bg-transparent backdrop-blur-xs">
+                    <li><a><img src="assets/phone.ico" ></a></li>
+                    <li><a><img src="assets/instagram.ico"></a></li>
+                    <li><a><img src="assets/tiktok.ico"></a></li>
+                </ul>
+            </div>
+            <h1 class="absolute top-80 text-3xl p-2">Debh Nails</h1>
+        </header>
+        <main class="relative flex flex-col w-full overflow-hidden">
+            <div class="flex flex-row space-x-8 w-full h-[70vh]">
+                
+                <!-- 332 × 210 px 
+                -->
+                <img class=" w-1/3 h-1/2 mt-20 object-cover" src="/assets/top-main-3.jpg" loading="lazy">
+                
+                
+                <!-- 256 × 420 px -->
+                <img class=" w-1/4 h-full mt-10 object-cover " src="/assets/top-main-3.jpg" loading="lazy">
+            
+            
+                <!-- 332 × 280  px -->
+                <img class=" w-2/6 h-2/3 object-cover " src="/assets/top-main-3.jpg" loading="lazy">
+            
+            </div>
+            <section class="flex flex-row items-center w-full h-dvh">
+                <canvas id="rotateCanvas" width="600" height="600" class="mx-20"></canvas>
+                <p>muela aksnjdasdkjalksjdlkajsdlkajdljal<br>
+                    skdjlasjdlkasjdlajsdlajdl<br>
+                    kjalskdjalsdjlkjalksdjlk
+                </p>
+            </section>
+            <!-----------------------------------------manicure -->
+            <section class="bg-amber-100 w-full h-dvh my-5 items-center overflow-hidden">
+                <h1 class="bg-amber-400 text-center col-start-2 h-10 ">Our Services</h1>
+                <div class="bg-amber-600 flex flex-col items-center">
+                    <h2 class="text-center">Manicure</h2>
+                    <p class="text-center">muela aksnjdasdkjalksjdlkajsdlkajdljal<br>
+                        skdjlasjdlkasjdlajsdlajdl<br>
+                        kjalskdjalsdjlkjalksdjlk
+                    </p>
+                    <div class=" w-50 h-50 flex items-center">
+                        <img class="bg-amber-400" src="/assets/top-main-3.jpg" loading="lazy">
+                    </div>
+                </div>
+                <div class="bg-amber-600 w-50 h-50 ">
+                    <img class="bg-amber-400" src="/assets/top-main-3.jpg" loading="lazy">
+                </div>
+                     
+            </section>
+            <!---------------------------------------Muela divisoria-->
+            <div class="bg-amber-400 w-full h-[40vh] my-5">
+                <h1 class="text-center ">muela dividiendo las secciones manicure y pedicure</h1>
+            </div>
+            <!---------------------------------------pedicure-->
+            <section class="bg-amber-100 w-full h-dvh my-5 overflow-hidden">
+                <div class="w-50 h-50">
+                    <img class="bg-amber-400" src="/assets/top-main-3.jpg" loading="lazy">
+                </div>
+                <div class="flex flex-col items-center justify-center">
+                    <h2 class="text-center">Pedicure</h2>
+                    <p class="text-center">ajasjdhasljfg</p>
+                    <img class="bg-amber-400 w-50 h-50" src="/assets/top-main-3.jpg" loading="lazy">
+                </div>                       
+            </section>
+
+            <!-----------------------------------------muela-->
+            <section class="bg-amber-100 w-full h-[70vh] my-5 overflow-hidden">
+                
+            </section>
+
+            <!-----------------------------------------team-->
+            <section class="bg-amber-100 w-full h-dvh my-5 overflow-hidden">
+                
+            </section>
+
+            <!-----------------------------------------galeria-->
+            <section class="bg-amber-100 w-full h-dvh my-5 overflow-hidden">
+                
+            </section>
+
+        </main>
+        <footer>
+            
+        </footer>
+    </body>
+</html>
