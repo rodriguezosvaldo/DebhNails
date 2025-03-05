@@ -1,111 +1,131 @@
-<!doctype html>
-<!--
-Fondo principal: #2B1D1B (Marrón cacao oscuro)
-Secciones destacadas / Fondo secundario: #3E2A26 (Marrón chocolate)
-Botones / Hovers: #D9A18A (Rosa terracota)
-Texto principal: #F5E8DD (Beige)
-Detalles decorativos / Resaltados: #E8CFC1 (Rosa palo) -->
+<!DOCTYPE html>
 <html>
     <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./script.js" defer></script>
-    <link href="./output.css" rel="stylesheet">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="./script.js" defer></script>
+        <link href="./output.css" rel="stylesheet">
     </head>
     <body class="flex flex-col text-text bg-primary">
-        <header class="relative flex flex-row justify-center w-full h-[70vh] overflow-hidden ">
+        <header class="relative flex flex-row justify-center w-full h-[60vh] overflow-hidden ">
             <img class="absolute left-10 top-5 w-30 h-30" src="/assets/logo.PNG" alt="Debh Nails logo">
-            <button class="w-20 h-10 z-10 fixed p-2 my-7 rounded-4xl hover:text-[#D9A18A] backdrop-blur-2xl">Booking</button>
-            <div class=" flex flex-col items-center fixed right-0 m-5 z-10">
-                <nav>
-                    <ul class="flex flex-row justify-around items-center w-90 h-10 p-2 my-2 rounded-4xl bg-transparent backdrop-blur-2xl">
-                        <li><a class="px-3 hover:text-[#D9A18A]">Home</a></li>
-                        <li><a class="px-3 hover:text-[#D9A18A]">Services</a></li>
-                        <li><a class="px-3 hover:text-[#D9A18A]">About Us</a></li>
-                    </ul>
-                </nav>
-                <ul class="flex flex-row justify-around items-center w-50 h-6 z-10 p-2 rounded-4xl bg-transparent backdrop-blur-xs">
-                    <li><a><img src="assets/phone.ico" ></a></li>
-                    <li><a><img src="assets/instagram.ico"></a></li>
-                    <li><a><img src="assets/tiktok.ico"></a></li>
+
+            <nav class="inline-flex fixed top-5 right-5 z-10 justify-center items-center ">
+                <ul class="inline-flex justify-around items-center p-2 rounded-4xl bg-transparent backdrop-blur-2xl">
+                    <li><a class="px-3 hover:text-hover">Home</a></li>
+                    <li class="relative group"> 
+                        <a class="px-3 hover:text-hover">Services</a>
+                        <ul class="hidden absolute top-6 right-0 p-2 space-y-2 group-hover:inline-block rounded-2xl bg-transparent backdrop-blur-2xl">
+                            <li><a href="manicure.html" class=" hover:text-hover">Manicure</a></li>
+                            <li><a href="pedicure.html" class=" hover:text-hover">Pedicure</a></li>
+                        </ul>
+                    </li>
                 </ul>
-            </div>
-            <h1 class="absolute top-80 text-3xl p-2">Debh Nails</h1>
+                <a class=" px-4 py-2 mx-5 rounded-4xl text-black bg-gray-200 hover:bg-gray-50">Booking</a>
+            </nav>
+            <h1 class="absolute top-80 text-7xl p-2">Debh Nails</h1>
         </header>
         <main class="relative flex flex-col w-full overflow-hidden">
             <div class="flex flex-row space-x-8 w-full h-[70vh]">
                 
-                <!-- 332 × 210 px 
-                -->
-                <img class=" w-1/3 h-1/2 mt-20 object-cover" src="/assets/top-main-3.jpg" loading="lazy">
-                
+                <!-- 332 × 210 px -->
+                <div class=" relative w-1/3 h-[60%] mt-30 overflow-hidden">
+                    <img class="absolute top-0 left-0 w-full h-[70vh] object-cover" src="/assets/top-main-3.jpg" loading="lazy">
+                </div>
                 
                 <!-- 256 × 420 px -->
-                <img class=" w-1/4 h-full mt-10 object-cover " src="/assets/top-main-3.jpg" loading="lazy">
+                <div class="relative w-1/3 h-full mt-15 overflow-hidden">
+                    <img class="absolute top-0 left-0 w-full h-full object-cover" src="/assets/top-main-3.jpg" loading="lazy">               
+                </div>
             
-            
-                <!-- 332 × 280  px -->
-                <img class=" w-2/6 h-2/3 object-cover " src="/assets/top-main-3.jpg" loading="lazy">
-            
+                <!-- 332 × 280 px -->
+                <div class="relative w-1/3 h-[70%] overflow-hidden">
+                    <img class="absolute top-0 left-0 w-full h-[70vh] object-cover" src="/assets/top-main-3.jpg" loading="lazy">                
+                </div>
             </div>
-            <section class="flex flex-row items-center w-full h-dvh">
-                <canvas id="rotateCanvas" width="600" height="600" class="mx-20"></canvas>
-                <p>muela aksnjdasdkjalksjdlkajsdlkajdljal<br>
-                    skdjlasjdlkasjdlajsdlajdl<br>
-                    kjalskdjalsdjlkjalksdjlk
+            <!-----------------------------------------logo animation -->
+            <section class="grid grid-cols-3 gap-2 items-center justify-center w-full h-screen">
+                <div class="col-span-2 w-auto h-auto flex flex-row justify-center items-center ">
+                    <canvas id="rotateCanvas" width="600" height="600"></canvas>
+                </div>
+                <p class="mr-20 font-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
+                    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris <br>
+                    nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in <br>
+                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur
                 </p>
             </section>
             <!-----------------------------------------manicure -->
-            <section class="bg-amber-100 w-full h-dvh my-5 items-center overflow-hidden">
-                <h1 class="bg-amber-400 text-center col-start-2 h-10 ">Our Services</h1>
-                <div class="bg-amber-600 flex flex-col items-center">
-                    <h2 class="text-center">Manicure</h2>
-                    <p class="text-center">muela aksnjdasdkjalksjdlkajsdlkajdljal<br>
-                        skdjlasjdlkasjdlajsdlajdl<br>
-                        kjalskdjalsdjlkjalksdjlk
+            <section class=" grid grid-cols-3 w-full h-screen justify-center items-center overflow-hidden">
+                <h1 class="text-center font-title text-4xl col-span-3 h-10 ">Services</h1>
+                <div class=" col-span-1 grid grid-rows-4 w-full h-full justify-center items-center overflow-hidden">
+                    <h2 class="bg-black p-2 text-center">Manicure</h2>
+                    <p class="bg-black p-2 text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
+                        Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br>
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br>
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                     </p>
-                    <div class=" w-50 h-50 flex items-center">
-                        <img class="bg-amber-400" src="/assets/top-main-3.jpg" loading="lazy">
+                    <div class="bg-black row-span-2 w-full h-full p-2 items-center overflow-hidden">
+                        <img class="w-full h-full object-cover" src="/assets/top-main-3.jpg" loading="lazy">
                     </div>
                 </div>
-                <div class="bg-amber-600 w-50 h-50 ">
-                    <img class="bg-amber-400" src="/assets/top-main-3.jpg" loading="lazy">
+                <div class="bg-black col-span-2 p-30 w-full h-full overflow-hidden">
+                    <img class="w-full h-full object-cover" src="/assets/top-main-3.jpg" loading="lazy">
                 </div>
                      
             </section>
-            <!---------------------------------------Muela divisoria-->
-            <div class="bg-amber-400 w-full h-[40vh] my-5">
-                <h1 class="text-center ">muela dividiendo las secciones manicure y pedicure</h1>
-            </div>
+            <!---------------------------------------Intermediate section-->
+            <section class="bg-primary w-full h-[60vh] justify-center items-center">
+                <p class=" w-full h-full content-center text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
+                    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br>
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br>
+                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </section>
+            
             <!---------------------------------------pedicure-->
-            <section class="bg-amber-100 w-full h-dvh my-5 overflow-hidden">
-                <div class="w-50 h-50">
-                    <img class="bg-amber-400" src="/assets/top-main-3.jpg" loading="lazy">
+            <section class="bg-amber-100 grid grid-cols-3 w-full h-screen items-center overflow-hidden">
+                
+                <div class="bg-black col-span-2 p-30 w-full h-full overflow-hidden">
+                    <img class="w-full h-full object-cover" src="/assets/top-main-3.jpg" loading="lazy">
                 </div>
-                <div class="flex flex-col items-center justify-center">
-                    <h2 class="text-center">Pedicure</h2>
-                    <p class="text-center">ajasjdhasljfg</p>
-                    <img class="bg-amber-400 w-50 h-50" src="/assets/top-main-3.jpg" loading="lazy">
-                </div>                       
-            </section>
-
-            <!-----------------------------------------muela-->
-            <section class="bg-amber-100 w-full h-[70vh] my-5 overflow-hidden">
                 
+                <div class=" col-span-1 grid grid-rows-4 w-full h-full justify-center items-center overflow-hidden">
+                    <h2 class="bg-black p-2 text-center">Pedicure</h2>
+                    <p class="bg-black p-2 text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
+                        Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br>
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br>
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                    <div class="bg-black row-span-2 w-full h-full p-2 items-center overflow-hidden">
+                        <img class="w-full h-full object-cover" src="/assets/top-main-3.jpg" loading="lazy">
+                    </div>
+                </div>
             </section>
-
-            <!-----------------------------------------team-->
-            <section class="bg-amber-100 w-full h-dvh my-5 overflow-hidden">
+            <!-----------------------------------------galery-->
+            <section class="bg-amber-100 flex flex-row justify-end items-end w-full h-[80vh] overflow-hidden ">
                 
-            </section>
-
-            <!-----------------------------------------galeria-->
-            <section class="bg-amber-100 w-full h-dvh my-5 overflow-hidden">
-                
+                <div class="bg-black grid grid-cols-5 space-x-0.5 w-1/2 h-1/3 mb-20 justify-center items-center overflow-hidden">
+                    <img src="/assets/top-main-3.jpg" alt="Imagen 1" class="w-full h-full object-cover">
+                    <img src="/assets/top-main-3.jpg" alt="Imagen 2" class="w-full h-full object-cover">
+                    <img src="/assets/top-main-3.jpg" alt="Imagen 3" class="w-full h-full object-cover">
+                    <img src="/assets/top-main-3.jpg" alt="Imagen 4" class="w-full h-full object-cover">
+                    <img src="/assets/top-main-3.jpg" alt="Imagen 5" class="w-full h-full object-cover">
+                </div>
+               
             </section>
 
         </main>
-        <footer>
+        <footer class="flex flex-row justify-center w-full h-[80vh] bg-primary">
+            <p class="text-[#E8CFC1]">Debh Nails 2021</p>
+            <ul class="flex flex-row justify-around items-center w-50 h-6 z-10 p-2 rounded-4xl bg-transparent backdrop-blur-xs">
+                <li><a><img class="w-5 h-5" src="/assets/phone.svg" ></a></li>
+                <li><a><img class="w-5 h-5" src="/assets/instagram.svg"></a></li>
+                <li><a><img class="w-5 h-5" src="/assets/tiktok.svg"></a></li>
+            </ul>
             
         </footer>
     </body>

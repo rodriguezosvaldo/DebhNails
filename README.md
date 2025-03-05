@@ -1,0 +1,1 @@
+This is a website for my friend's nail salon. It is built using HTML, Tailwind CSS, and JavaScript. The website can be visited on debhnails.com

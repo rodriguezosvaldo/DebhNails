@@ -4,9 +4,14 @@
     --color-primary: #222220;
     --color-secondary: #3E2A26;
     --color-text: #F5E8DD;
+    --color-h1: #d1d5dc;
     --color-decorative: #E8CFC1;
     --color-hover: #D9A18A;
     
-    --default-font-family: arial;/*??????*/
+    --font-title: Eras Light ITC;
+    --font-text: Centaur;
+    --font-decorative: Freestyle Script;
 
 }
+
+
