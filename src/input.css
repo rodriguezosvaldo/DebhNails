@@ -1,9 +1,10 @@
 @import "tailwindcss";
 
+/*dark color 222220 */
 @theme{
-    --color-primary: #222220;
+    --color-primary: #f1e5e2;
     --color-secondary: #3E2A26;
-    --color-text: #F5E8DD;
+    --color-text: black;
     --color-h1: #d1d5dc;
     --color-decorative: #E8CFC1;
     --color-hover: #D9A18A;
@@ -11,7 +12,61 @@
     --font-title: Eras Light ITC;
     --font-text: Centaur;
     --font-decorative: Freestyle Script;
-
 }
 
 
+
+
+/* Text animation styles */
+.loading-animation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Altura fija para evitar saltos */
+    height: 200px;
+    position: relative;
+}
+#text {
+    position: absolute;
+    top: 150px; /* Ajusta según tamaño de tu logo */
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    height: auto;
+    width: auto;
+    overflow: hidden;
+}
+
+.text-reveal span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Loading overlay transitions */
+#loading-overlay {
+    transform: scaleY(1);
+    transition: transform 0.5s ease-in;
+}
+
+/* Make sure the body doesn't scroll while loading */
+body.loading {
+    overflow: hidden;
+}
+
+#logo-container {
+    position: absolute;
+    top: 0;
+    width: 130px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo-container img {
+    width: 130px;
+    height: auto;
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}

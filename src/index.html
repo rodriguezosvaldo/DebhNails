@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="scroll-smooth">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,44 +7,49 @@
         <link href="./output.css" rel="stylesheet">
     </head>
     <body class="flex flex-col text-text bg-primary">
-        <header class="relative flex flex-row justify-center w-full h-[60vh] overflow-hidden ">
-            <img class="absolute left-10 top-5 w-30 h-30" src="/assets/logo.PNG" alt="Debh Nails logo">
-
+        <!-- Loading overlay - solo esta parte -->
+        <div id="loading-overlay" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white">
+            <div class="loading-animation flex flex-col items-center" style="height: 200px; position: relative;">
+                <div id="logo-container" class="mb-4" style="position: absolute; top: 0;"></div>
+                <div id="text" style="position: absolute; top: 150px; width: 200px;"></div>
+            </div>
+        </div>
+        
+        <header class="relative flex flex-row justify-center w-full h-[60vh] ">
+            <img class="absolute left-10 top-5 w-30 h-30" id="logo" src="/assets/logos/logo.PNG" alt="Debh Nails logo">
             <nav class="inline-flex fixed top-5 right-5 z-10 justify-center items-center ">
                 <ul class="inline-flex justify-around items-center p-2 rounded-4xl bg-transparent backdrop-blur-2xl">
-                    <li><a class="px-3 hover:text-hover">Home</a></li>
-                    <li class="relative group"> 
-                        <a class="px-3 hover:text-hover">Services</a>
-                        <ul class="hidden absolute top-6 right-0 p-2 space-y-2 group-hover:inline-block rounded-2xl bg-transparent backdrop-blur-2xl">
-                            <li><a href="manicure.html" class=" hover:text-hover">Manicure</a></li>
-                            <li><a href="pedicure.html" class=" hover:text-hover">Pedicure</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="index.html" class="px-3 hover:text-hover">Home</a></li>
+                    <li><a href="services.html" class="px-3 hover:text-hover">Services</a></li>
                 </ul>
                 <a class=" px-4 py-2 mx-5 rounded-4xl text-black bg-gray-200 hover:bg-gray-50">Booking</a>
             </nav>
-            <h1 class="absolute top-80 text-7xl p-2">Debh Nails</h1>
+            <p class="absolute top-70 text-center text-4xl ">
+                Lorem ipsum dolor sit amet<br> 
+                consectetur adipiscing elit.
+            </p>
+                
         </header>
         <main class="relative flex flex-col w-full overflow-hidden">
-            <div class="flex flex-row space-x-8 w-full h-[70vh]">
+            <div class="flex space-x-8 w-full h-[70vh]">
                 
                 <!-- 332 × 210 px -->
                 <div class=" relative w-1/3 h-[60%] mt-30 overflow-hidden">
-                    <img class="absolute top-0 left-0 w-full h-[70vh] object-cover" src="/assets/top-main-3.jpg" loading="lazy">
+                    <img class="absolute top-0 left-0 w-full h-[70vh] object-cover" src="/assets/pictures/top-main-3.jpg" loading="lazy">
                 </div>
                 
                 <!-- 256 × 420 px -->
                 <div class="relative w-1/3 h-full mt-15 overflow-hidden">
-                    <img class="absolute top-0 left-0 w-full h-full object-cover" src="/assets/top-main-3.jpg" loading="lazy">               
+                    <img class="absolute top-0 left-0 w-full h-full object-cover" src="/assets/pictures/top-main-3.jpg" loading="lazy">               
                 </div>
             
                 <!-- 332 × 280 px -->
                 <div class="relative w-1/3 h-[70%] overflow-hidden">
-                    <img class="absolute top-0 left-0 w-full h-[70vh] object-cover" src="/assets/top-main-3.jpg" loading="lazy">                
+                    <img class="absolute top-0 left-0 w-full h-[70vh] object-cover" src="/assets/pictures/top-main-3.jpg" loading="lazy">                
                 </div>
             </div>
             <!-----------------------------------------logo animation -->
-            <section class="grid grid-cols-3 gap-2 items-center justify-center w-full h-screen">
+            <section class="grid grid-cols-3 gap-2 items-center justify-center my-30 w-full h-screen">
                 <div class="col-span-2 w-auto h-auto flex flex-row justify-center items-center ">
                     <canvas id="rotateCanvas" width="600" height="600"></canvas>
                 </div>
@@ -55,78 +60,82 @@
                     reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur
                 </p>
             </section>
-            <!-----------------------------------------manicure -->
-            <section class=" grid grid-cols-3 w-full h-screen justify-center items-center overflow-hidden">
-                <h1 class="text-center font-title text-4xl col-span-3 h-10 ">Services</h1>
-                <div class=" col-span-1 grid grid-rows-4 w-full h-full justify-center items-center overflow-hidden">
-                    <h2 class="bg-black p-2 text-center">Manicure</h2>
-                    <p class="bg-black p-2 text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
-                        Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br>
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br>
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                    <div class="bg-black row-span-2 w-full h-full p-2 items-center overflow-hidden">
-                        <img class="w-full h-full object-cover" src="/assets/top-main-3.jpg" loading="lazy">
+            <!-----------------------------------------About deboritah -->
+            <section class="flex flex-col justify-center items-center w-full h-screen my-30 space-y-30">
+                <h2 class="text-4xl font-text h-auto">About Deboritah</h2>
+                <div class="flex justify-around items-center w-full h-auto space-x-20">
+                    <div class="flex flex-row justify-center items-center w-150 h-100">
+                        <p class="w-full h-full content-center text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
+                            Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
+                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br>
+                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br>
+                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
                     </div>
-                </div>
-                <div class="bg-black col-span-2 p-30 w-full h-full overflow-hidden">
-                    <img class="w-full h-full object-cover" src="/assets/top-main-3.jpg" loading="lazy">
-                </div>
-                     
+                    <div class="flex flex-row justify-center items-center w-120 h-150 overflow-hidden">    
+                        <img class="w-full h-full" src="/assets/pictures/top-main-3.jpg" alt="Deboritah">
+                    </div>  
+                </div>  
             </section>
-            <!---------------------------------------Intermediate section-->
-            <section class="bg-primary w-full h-[60vh] justify-center items-center">
-                <p class=" w-full h-full content-center text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
-                    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br>
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br>
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-            </section>
-            
-            <!---------------------------------------pedicure-->
-            <section class="bg-amber-100 grid grid-cols-3 w-full h-screen items-center overflow-hidden">
+
+            <!---------------------------------------location-->
+            <section class="flex w-full h-screen justify-center items-center my-30 space-x-20">
+                    
+                <div class="flex flex-row justify-center items-center w-200 h-150 overflow-hidden">
+                    <video class="w-full h-full object-cover" src="/assets/videos/video2.webm" autoplay muted loop playsinline loading="lazy" type="video/webm"></video>
+                </div>   
                 
-                <div class="bg-black col-span-2 p-30 w-full h-full overflow-hidden">
-                    <img class="w-full h-full object-cover" src="/assets/top-main-3.jpg" loading="lazy">
-                </div>
-                
-                <div class=" col-span-1 grid grid-rows-4 w-full h-full justify-center items-center overflow-hidden">
-                    <h2 class="bg-black p-2 text-center">Pedicure</h2>
-                    <p class="bg-black p-2 text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
+                <div class="flex flex-row justify-center items-center w-150 h-100">
+                    <p class="w-full h-full content-center text-center">Nos encontramos en mall st ajsdaksdl.<br>
                         Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br>
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br>
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                    <div class="bg-black row-span-2 w-full h-full p-2 items-center overflow-hidden">
-                        <img class="w-full h-full object-cover" src="/assets/top-main-3.jpg" loading="lazy">
-                    </div>
-                </div>
+                    </p>  
+                </div>    
             </section>
             <!-----------------------------------------galery-->
-            <section class="bg-amber-100 flex flex-row justify-end items-end w-full h-[80vh] overflow-hidden ">
+            <section class="flex flex-row justify-end items-end my-30 w-full h-[80vh] overflow-hidden ">
                 
-                <div class="bg-black grid grid-cols-5 space-x-0.5 w-1/2 h-1/3 mb-20 justify-center items-center overflow-hidden">
-                    <img src="/assets/top-main-3.jpg" alt="Imagen 1" class="w-full h-full object-cover">
-                    <img src="/assets/top-main-3.jpg" alt="Imagen 2" class="w-full h-full object-cover">
-                    <img src="/assets/top-main-3.jpg" alt="Imagen 3" class="w-full h-full object-cover">
-                    <img src="/assets/top-main-3.jpg" alt="Imagen 4" class="w-full h-full object-cover">
-                    <img src="/assets/top-main-3.jpg" alt="Imagen 5" class="w-full h-full object-cover">
+                <div class="grid grid-cols-5 space-x-0.5 w-1/2 h-1/3 mb-20 justify-center items-center overflow-hidden">
+                    <img src="/assets/pictures/top-main-3.jpg" alt="Imagen 1" class="w-full h-full object-cover">
+                    <img src="/assets/pictures/top-main-3.jpg" alt="Imagen 2" class="w-full h-full object-cover">
+                    <img src="/assets/pictures/top-main-3.jpg" alt="Imagen 3" class="w-full h-full object-cover">
+                    <img src="/assets/pictures/top-main-3.jpg" alt="Imagen 4" class="w-full h-full object-cover">
+                    <img src="/assets/pictures/top-main-3.jpg" alt="Imagen 5" class="w-full h-full object-cover">
                 </div>
                
             </section>
 
         </main>
-        <footer class="flex flex-row justify-center w-full h-[80vh] bg-primary">
-            <p class="text-[#E8CFC1]">Debh Nails 2021</p>
-            <ul class="flex flex-row justify-around items-center w-50 h-6 z-10 p-2 rounded-4xl bg-transparent backdrop-blur-xs">
-                <li><a><img class="w-5 h-5" src="/assets/phone.svg" ></a></li>
-                <li><a><img class="w-5 h-5" src="/assets/instagram.svg"></a></li>
-                <li><a><img class="w-5 h-5" src="/assets/tiktok.svg"></a></li>
-            </ul>
-            
+        <footer class="bg-hover grid grid-cols-2 justify-center items-center w-full h-[60vh] ">
+            <div class="flex flex-row justify-center items-center w-full h-full space-x-15">
+                <img class="w-70 h-70" src="/assets/logos/logo.PNG" alt="Debh Nails logo">
+                <div class="w-px bg-black h-64"></div>
+                <ul class="flex flex-col items-start space-y-10">
+                    <li>
+                        <a href="tel:+15029755722" class="flex flex-row justify-center items-center space-x-2">
+                            <img class="w-7 h-7" src="/assets/logos/phone.svg">
+                            <span>502 975-5722</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" class="flex flex-row justify-center items-center space-x-2">
+                            <img class="w-7 h-7" src="/assets/logos/instagram.svg">
+                            <span>Instagram</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" class="flex flex-row justify-center items-center space-x-2">
+                            <img class="w-7 h-7" src="/assets/logos/tiktok.svg">
+                            <span>Tiktok</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://debhnails.com/" class="flex flex-row justify-center items-center space-x-2">
+                            <img class="w-7 h-7" src="/assets/logos/tiktok.svg">
+                            <span>debhnails.com</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </footer>
     </body>
 </html>
