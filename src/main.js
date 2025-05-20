@@ -39,6 +39,7 @@ ParallaxEffect()
 function Rotation() {
     // Logo variables
     const canvasLogo = document.getElementById("rotatingLogo");
+    if (!canvasLogo) return;
     const contextLogo = canvasLogo.getContext("2d");
     const logo = {
         canvas: canvasLogo,
@@ -53,10 +54,11 @@ function Rotation() {
         hasImage: true
     };
     const img = new Image();
-    img.src = "/logos/logo.PNG";
+    img.src = "/logos/logo.webp";
 
     // Gallery variables
     const canvasTextGallery = document.getElementById("rotatingTextGallery");
+    if (!canvasTextGallery) return;
     const contextTextGallery = canvasTextGallery.getContext("2d");
     const textGallery = {
         canvas: canvasTextGallery,
@@ -128,14 +130,17 @@ function Rotation() {
 
 
 function ParallaxEffect() {
-    let smoother = ScrollSmoother.create({
-        wrapper: "#smooth-wrapper",      
-        content: "#smooth-content",
-        smooth: 1.5, // how long (in seconds) it takes to "catch up" to the scroll position
-        effects: true, // enable/disable effects parallax
-        normalizeScroll: true,
-        smoothTouch: 0.1
-    });
+    document.querySelectorAll('.smooth-wrapper').forEach(wrapper => {
+        const content = wrapper.querySelector('.smooth-content');
+        ScrollSmoother.create({
+          wrapper: wrapper,
+          content: content,
+          smooth: 1.5,
+          effects: true,
+          normalizeScroll: true,
+          smoothTouch: 0.1
+        });
+      });
     
     // Parallax for img containers
     gsap.utils.toArray(".parallax-container").forEach(container => {
