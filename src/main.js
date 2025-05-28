@@ -29,11 +29,12 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 
-Rotation()
-ParallaxEffect()
-
-
-
+Rotation();
+ParallaxEffect();
+SmoothScroll();
+PinningEffect();
+ServicesScroll();
+ServiceCard();
 
 
 function Rotation() {
@@ -113,7 +114,7 @@ function Rotation() {
             textGallery.ctx.fillText(textGallery.text[i], 0, 0);
             textGallery.ctx.restore();
         }
-        textGallery.rotationAngle += 0.003;
+        textGallery.rotationAngle += 0.006;
 
         requestAnimationFrame(drawRotatingText);
     }
@@ -125,74 +126,23 @@ function Rotation() {
     if (img.complete) {
         drawRotatingText();
     }
-}
+};
 
-
-
-function ParallaxEffect() {
+function SmoothScroll() {
     document.querySelectorAll('.smooth-wrapper').forEach(wrapper => {
-        const content = wrapper.querySelector('.smooth-content');
-        ScrollSmoother.create({
-          wrapper: wrapper,
-          content: content,
-          smooth: 1.5,
-          effects: true,
-          normalizeScroll: true,
-          smoothTouch: 0.1
-        });
-      });
-    
-    // Parallax for img containers
-    gsap.utils.toArray(".parallax-container").forEach(container => {
-        const yTransition = container.dataset.parallaxY !== undefined ? 
-                        parseInt(container.dataset.parallaxY) : 0;
-        const xTransition = container.dataset.parallaxX !== undefined ?
-                        parseInt(container.dataset.parallaxX) : 0;
-        const startPoint = container.dataset.startPoint !== undefined ?
-                        container.dataset.startPoint : "top bottom"; 
-                    
-
-        gsap.to(container, {
-            scrollTrigger: {
-                trigger: container,
-                toggleActions: "play none reverse none",
-                start: startPoint, //me quede aki, darle start a cada elemento html
-                end: "bottom top",
-                scrub: 0.2,
-            },
-            y: -yTransition,
-            x: xTransition,
-            duration: 1,
-            ease: "none",
-        });
+    const content = wrapper.querySelector('.smooth-content');
+    ScrollSmoother.create({
+      wrapper: wrapper,
+      content: content,
+      smooth: 1.5,
+      effects: true,
+      normalizeScroll: true,
+      smoothTouch: 0.1
     });
+  });
+};
 
-    // Parallax for img
-    gsap.utils.toArray(".parallax-img").forEach(img => {
-        const yTransition = img.dataset.parallaxY !== undefined ? 
-                        parseInt(img.dataset.parallaxY) : 0;
-        const xTransition = img.dataset.parallaxX !== undefined ?
-                        parseInt(img.dataset.parallaxX) : 0;
-        const startPoint = img.dataset.startPoint !== undefined ?
-                        img.dataset.startPoint : "top bottom";
-                      
-        gsap.to(img, {
-            scrollTrigger: {
-                trigger: img,
-                toggleActions: "play none reverse none",
-                start: startPoint, 
-                end: "bottom top",
-                scrub: 0.2,
-            },
-            y: -yTransition,
-            x: xTransition,
-            duration: 1,
-            ease: "none",
-        });
-    });
-
-
-
+function PinningEffect() {
     // Pinning de la sección completa y las imágenes
     const pinSection = document.querySelector(".pin-imgs-section");
     const pinImgsContainer = document.querySelector(".pin-imgs-container");
@@ -244,5 +194,209 @@ function ParallaxEffect() {
         });
     };
 };
+
+function ParallaxEffect() {
+    // Parallax for img containers
+    gsap.utils.toArray(".parallax-container").forEach(container => {
+        const yTransition = container.dataset.parallaxY !== undefined ? 
+                        parseInt(container.dataset.parallaxY) : 0;
+        const xTransition = container.dataset.parallaxX !== undefined ?
+                        parseInt(container.dataset.parallaxX) : 0;
+        const startPoint = container.dataset.startPoint !== undefined ?
+                        container.dataset.startPoint : "top bottom"; 
+                    
+
+        gsap.to(container, {
+            scrollTrigger: {
+                trigger: container,
+                toggleActions: "play none reverse none",
+                start: startPoint, //me quede aki, darle start a cada elemento html
+                end: "bottom top",
+                scrub: 0.2,
+            },
+            y: -yTransition,
+            x: xTransition,
+            duration: 1,
+            ease: "none",
+        });
+    });
+
+    // Parallax for img
+    gsap.utils.toArray(".parallax-img").forEach(img => {
+        const yTransition = img.dataset.parallaxY !== undefined ? 
+                        parseInt(img.dataset.parallaxY) : 0;
+        const xTransition = img.dataset.parallaxX !== undefined ?
+                        parseInt(img.dataset.parallaxX) : 0;
+        const startPoint = img.dataset.startPoint !== undefined ?
+                        img.dataset.startPoint : "top bottom";
+                      
+        gsap.to(img, {
+            scrollTrigger: {
+                trigger: img,
+                toggleActions: "play none reverse none",
+                start: startPoint, 
+                end: "bottom top",
+                scrub: 0.2,
+            },
+            y: -yTransition,
+            x: xTransition,
+            duration: 1,
+            ease: "none",
+        });
+    });
+};
+
+function ServicesScroll() {
+    const servicesSection = document.querySelector(".services-section");
+    const sideDivs = gsap.utils.toArray(".side-div");
+    const middleDiv = document.querySelector(".middle-div");
+    const sideDivsHeight = sideDivs[0].getBoundingClientRect().height;
+    const scrollHeight = sideDivsHeight - window.innerHeight;
+
+    // Pinning services section
+    ScrollTrigger.create({
+        trigger: servicesSection,
+        start: "top top",
+        endTrigger: sideDivs[0],
+        end: `bottom+=${scrollHeight} bottom`, 
+        pin: true,
+        pinSpacing: true,
+    });
+
+    // Animate side divs on scroll
+    if (!servicesSection) return;
+    gsap.utils.toArray('.side-div').forEach((sideDiv) => {
+        gsap.to(sideDiv, {
+            scrollTrigger: {
+                trigger: servicesSection,
+                start: "top top",
+                endTrigger: sideDivs[0],
+                end: `bottom+=${scrollHeight} bottom`,
+                scrub: 1.5,
+            },
+            y: -scrollHeight,
+        });
+    });
+
+    gsap.to(middleDiv, {
+        scrollTrigger: {
+            trigger: servicesSection,
+            start: "top top",
+            endTrigger: sideDivs[0],
+            end: `bottom+=${scrollHeight} bottom`,
+            scrub: 1.5,
+        },
+        y: scrollHeight,
+    });
+};
+
+function ServiceCard() {
+    const expandedCardInfo = [
+        {
+            id: "rubber-base",
+            service: "Rubber Base",
+            src: "/pictures/rubber-base.webp",
+            description: "A flexible, long-lasting base coat that strengthens your natural nails and helps prevent breakage. Perfect for added durability and a smooth, even surface before color application. Ideal for weak or brittle nails!",
+        },
+        {
+            id: "polygel",
+            service: "Polygel",
+            src: "/pictures/polygel.webp",
+            description: "A hybrid nail enhancement that combines the strength of acrylic with the flexibility of gel. Lightweight, odorless, and easy to shape, Polygel is perfect for natural-looking extensions or overlays with long-lasting durability and comfort.",
+        },
+        {
+            id: "gel-x",
+            service: "Gel-X",
+            src: "/pictures/gel-x.webp",
+            description: "A full-cover, soft gel extension system that offers a lightweight, flexible, and natural-looking alternative to traditional enhancements. Quick to apply and gentle on natural nails, Gel-X provides flawless, long-lasting results with minimal filing or damage.",
+        },
+        {
+            id: "simple-nail-art",
+            service: "Simple Nail Art",
+            src: "/pictures/simple-nail-art.webp",
+            description: "Elegant, minimal designs such as lines, dots, French tips, or subtle accents. A refined way to personalize your nails with a clean, stylish touch.",
+        },
+        {
+            id: "intermediate-nail-art",
+            service: "Intermediate Nail Art",
+            src: "/pictures/intermediate-nail-art.webp",
+            description: "Includes more detailed designs like florals, abstract patterns, or themed sets. A creative way to express your style with balanced detail and sophistication.",
+        },
+        {
+            id: "advanced-nail-art",
+            service: "Advanced Nail Art",
+            src: "/pictures/advanced-nail-art.webp",
+            description: "Intricate, hand-painted designs, 3D elements, character art, or layered patterns. Perfect for bold, statement looks and custom, artistic expression.",
+        },
+        {
+            id: "french-manicure",
+            service: "French Manicure",
+            src: "/pictures/french-manicure.webp",
+            description: "A timeless and elegant style featuring a natural pink or nude base with crisp white tips. Perfect for a clean, classic look that suits any occasion.",
+        },
+        {
+            id: "acrylic-nails",
+            service: "Acrylic Nails",
+            src: "/pictures/acrylic-nails.webp",
+            description: "A durable and versatile nail enhancement created by combining liquid monomer and powder polymer. Ideal for adding length, strength, and shape to natural nails, with a flawless finish that lasts for weeks.",
+        },
+        {
+            id: "builder-gel",
+            service: "Builder Gel",
+            src: "/pictures/builder-gel.webp",
+            description: "A lightweight and durable gel ideal for strengthening natural nails or creating extensions. Perfect for clients with weak or brittle nails, it offers a more flexible and natural feel compared to acrylic, while still providing long-lasting structure and a flawless finish.",
+        },
+        {
+            id: "russian-manicure",
+            service: "Russian Manicure",
+            src: "/pictures/russian-manicure.webp",
+            description: "A meticulous dry manicure technique that focuses on detailed cuticle work using an electric file. It results in a clean, polished appearance and longer-lasting nail enhancements, offering a refined and elegant finish.",
+        },
+        {
+            id: "luxury-manicure",
+            service: "Luxury Manicure",
+            src: "/pictures/luxury-manicure.webp",
+            description: "Experience the ultiate in nail care with a meticulous Russian manicure and long-lasting gel polish. This deluxe treatmentalso includes exfoliation, a relaxing hand massage, a collagen mask, and a paraffin wax treatment for flawless, elegant hands",
+        }
+    ];
+        
+
+
+    const serviceCards = document.querySelectorAll(".service-card");
+    serviceCards.forEach(card => {
+        card.addEventListener("click", () => {
+            const modal = document.getElementById('modal');
+            if (!modal.classList.contains('hidden')) return;
+            const modalImg = modal.querySelector('img');
+            const modalService = modal.querySelector('span');
+            const modalDescription = modal.querySelector('p');
+
+            const cardId = card.id;
+            const cardInfo = expandedCardInfo.find(info => info.id === cardId);
+            modalImg.src = cardInfo.src;
+            modalService.textContent = cardInfo.service;
+            modalDescription.textContent = cardInfo.description;
+
+            modal.classList.remove('hidden');
+            modal.classList.add('expanded-card');
+
+            // Overlay para cerrar
+            const overlay = document.createElement('div');
+            overlay.className = 'card-overlay';
+            overlay.classList.add('animate-expand-vertically');
+            overlay.addEventListener('click', () => {
+                modal.classList.add('hidden');
+                modal.classList.remove('expanded-card');
+                overlay.remove();
+            });
+            document.body.appendChild(overlay);
+            document.body.appendChild(modal);
+        });
+    });
+}
+
+
+
+
 
 

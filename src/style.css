@@ -1,11 +1,10 @@
 @import "tailwindcss";
 @plugin "@midudev/tailwind-animations";
 
-
 /*dark color 222220 */
 @theme {
   --color-primary: #f1e5e2;  /*tono de beige rosado muy claro o crema rosado*/
-  --color-secondary: #3E2A26; /*tono de marrón muy claro o beige oscuro*/
+  --color-secondary: #f7c6ce; /*tono de rosa*/
   --color-text: black; 
   --color-h1: #d1d5dc; /*tono de gris claro*/
   --color-decorative: #E8CFC1; /*tono de beige rosado claro*/
@@ -16,37 +15,68 @@
   --font-decorative: Freestyle Script;
 
 }
-/*-------------header pictures animation-------------*/
-@keyframes header-pictures {
-  0% {
-    transform: translateY(500px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0px);
-    opacity: 1;
-  }
-}
 
-.header-pictures {
-  animation: header-pictures 1s ease-out;
-}
+/*-------------header pictures animation-------------*/
+  @keyframes header-pictures {
+    0% {
+      transform: translateY(500px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0px);
+      opacity: 1;
+    }
+  }
+
+  .header-pictures {
+    animation: header-pictures 1s ease-out;
+  }
 
 /*-------------gallery loop animation-------------*/
-@keyframes gallery-loop {
-  0% {
-    transform: translateX(0);
+  @keyframes gallery-loop {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
   }
-  100% {
-    transform: translateX(-100%);
+
+  .gallery-loop {
+    animation: gallery-loop 30s linear infinite;
   }
-}
 
-.gallery-loop {
-  animation: gallery-loop 20s linear infinite;
-}
+/*-------------Expanded service card-------------*/
+  .card-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.3);
+    z-index: 20;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);/*for safari*/
+  }
 
-
+  @keyframes opacity {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  .expanded-card {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 600px;
+    z-index: 30;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: opacity 0.4s ease-in-out;
+  }
 
 
 

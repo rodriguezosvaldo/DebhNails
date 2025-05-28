@@ -15,7 +15,10 @@
                 <li><a href="index.html" class="px-3 hover:text-hover">Home</a></li>
                 <li><a href="services.html" class="px-3 hover:text-hover">Services</a></li>
             </ul>
-            <a class=" px-4 py-2 mx-5 rounded-4xl text-black bg-gray-200 hover:bg-gray-50">Booking</a>
+            <a href="https://booksy.com/en-us/1405351_debh-nails_nail-salon_21078_louisville#ba_s=sh_1" 
+                class="px-4 py-2 mx-5 rounded-4xl text-black bg-secondary hover:scale-105 hover:shadow-lg shadow-secondary/70 transition-all duration-200">
+                Booking
+            </a>
         </nav>
         <div class="smooth-wrapper">
             <div class="smooth-content">
@@ -37,27 +40,21 @@
                 </header>
                 <main class="relative flex flex-col w-full" >
                     <div class="flex space-x-8 py-5 w-full h-screen header-pictures">
-                        
-                        <!-- 332 × 210 px data-speed="0.5"-->
-                        <div class="relative w-1/3 h-[50%] mt-30 overflow-hidden parallax-container" data-parallax-y="500">
+                        <div class="relative w-1/3 h-[50%] mt-30 overflow-hidden shadow-md shadow-black/70 parallax-container" data-parallax-y="500">
                             <img class="absolute top-0 left-0 w-[100%] h-[150%] object-cover parallax-img"  
-                                src="/pictures/top-main-3.webp" 
+                                src="/pictures/test1.webp" 
                                 loading="lazy"
                                 data-parallax-y="200">
                         </div>
-                        
-                        <!-- 256 × 420 px -->
-                        <div class="relative w-1/3 h-[70%] mt-15 overflow-hidden parallax-container" data-parallax-y="250">
+                        <div class="relative w-1/3 h-[70%] mt-15 overflow-hidden shadow-md shadow-black/70 parallax-container" data-parallax-y="250">
                             <img class="absolute top-0 left-0 w-[100%] h-[150%] object-cover parallax-img" 
-                                src="/pictures/top-main-3.webp"
+                                src="/pictures/test4.webp"
                                 loading="lazy"
                                 data-parallax-y="200">               
                         </div>
-                    
-                        <!-- 332 × 280 px -->
-                        <div class="relative w-1/3 h-[60%] overflow-hidden parallax-container" data-parallax-y="50">
+                        <div class="relative w-1/3 h-[60%] overflow-hidden shadow-md shadow-black/70 parallax-container" data-parallax-y="50">
                             <img class="absolute top-0 left-0 w-[100%] h-[150%] object-cover parallax-img" 
-                                src="/pictures/top-main-3.webp" 
+                                src="/pictures/test2.webp" 
                                 loading="lazy"
                                 data-parallax-y="200">                
                         </div>
@@ -80,7 +77,7 @@
                         <!-----------------------------------------Design -->
                         <div class="grid grid-cols-3 gap-20 px-40 justify-around items-center w-full h-[75vh]">
 
-                          <!-- Texto e imagen pequeña -->
+                          <!-- Texto e imagen pequeña (Hacer que el h3 cambie la palabra: Design, Style, Personality)-->
                             <div class="flex flex-col gap-6 h-full justify-between items-center">
                                 <div class="">
                                     <h3 class="text-2xl font-semibold uppercase mb-4">Design</h3>
@@ -91,130 +88,90 @@
                                 </div>
                                 <div class="relative w-80 h-80 overflow-hidden justify-center items-center">
                                     <img class="absolute top-0 left-0 object-cover"  
-                                        src="/pictures/top-main-3.webp" 
+                                        src="/pictures/test4.webp" 
                                         loading="lazy">
                                 </div>
                             </div>
                       
                           <!-- Imagen grande -->
-                            <div class="relative flex-col col-span-2 w-full h-full items-start pin-imgs-container">
+                            <div class="relative flex-col col-span-2 w-full h-full items-start shadow-md shadow-black/70 pin-imgs-container">
                                 <div class="relative flex w-full h-full object-cover pin-img" id="first-img">
                                     <img class="absolute top-0 left-0 w-full h-full object-cover"
-                                    src="/pictures/gallery1.webp" 
+                                    src="/pictures/test1.webp" 
                                     loading="lazy">
                                 </div>
                                 <div class="relative flex w-full h-full object-cover pin-img" id="second-img">
                                     <img class="absolute top-0 left-0 w-full h-full object-cover" 
-                                    src="/pictures/gallery2.webp" 
+                                    src="/pictures/test2.webp" 
                                     loading="lazy">
                                 </div>
                                 <div class="relative flex w-full h-full object-cover pin-img" id="third-img">
                                     <img class="absolute top-0 left-0 w-full h-full object-cover"  
-                                    src="/pictures/gallery3.webp" 
+                                    src="/pictures/test5.webp" 
                                     loading="lazy">
                                 </div>
                
                                 
                             </div>
                         </div>
-                        
-
-
                     </section>
 
                     <!-----------------------------------------gallery-->
-                    <section class="relative flex w-full h-screen justify-end items-center my-10">
-                        <div class="absolute top-5 left-15 -z-10 w-auto h-auto flex justify-center items-center opacity-50">
+                    <section class="relative flex w-full h-screen justify-end items-end my-10">
+                        <div class="absolute top-72 left-80 -z-10 w-auto h-auto flex justify-center items-center opacity-50">
                             <canvas id="rotatingTextGallery" width="300" height="300"></canvas>
                         </div>
-                        <div class="relative flex items-center overflow-hidden w-[1024px] h-96">
+                        <div class="relative flex items-center overflow-hidden w-[1024px] h-80 mb-20">
 
-                            <div class="bg-blue-500 absolute top-0 left-0 flex items-center space-x-4 pl-4 shrink-0 gallery-loop">
-                                <!-- Debugging with divs. It still doesn't work well (small jumps)-->
-                                <div class="w-80 h-80 shrink-0 flex items-center justify-center text-5xl font-bold text-white bg-black">1</div>
-                                <div class="w-80 h-80 shrink-0 flex items-center justify-center text-5xl font-bold text-white bg-black">2</div>
-                                <div class="w-80 h-80 shrink-0 flex items-center justify-center text-5xl font-bold text-white bg-black">3</div>
-                                <div class="w-80 h-80 shrink-0 flex items-center justify-center text-5xl font-bold text-white bg-black">4</div>
-                                <div class="w-80 h-80 shrink-0 flex items-center justify-center text-5xl font-bold text-white bg-black">5</div>
-                                <div class="w-80 h-80 shrink-0 flex items-center justify-center text-5xl font-bold text-white bg-black">6</div>
-                                <div class="w-80 h-80 shrink-0 flex items-center justify-center text-5xl font-bold text-white bg-black">7</div>
-                                <div class="w-80 h-80 shrink-0 flex items-center justify-center text-5xl font-bold text-white bg-black">8</div>
-                                <div class="w-80 h-80 shrink-0 flex items-center justify-center text-5xl font-bold text-white bg-black">9</div>
-                                <div class="w-80 h-80 shrink-0 flex items-center justify-center text-5xl font-bold text-white bg-black">10</div>
+                            <div class="absolute top-0 left-0 flex items-center space-x-4 pl-4 shrink-0 gallery-loop">
+                                <!-- First set of images -->
+                                <img class="w-80 h-80 object-cover shrink-0" src="/pictures/acrylic-nails.webp" alt="Imagen 1">
+                                <img class="w-80 h-80 object-cover shrink-0" src="/pictures/advanced-nail-art.webp" alt="Imagen 2">
+                                <img class="w-80 h-80 object-cover shrink-0" src="/pictures/builder-gel.webp" alt="Imagen 3">
+                                <img class="w-80 h-80 object-cover shrink-0" src="/pictures/french-manicure.webp" alt="Imagen 4">
+                                <img class="w-80 h-80 object-cover shrink-0" src="/pictures/gel-x.webp" alt="Imagen 5">
+                                <img class="w-80 h-80 object-cover shrink-0" src="/pictures/intermediate-nail-art.webp" alt="Imagen 6">
+                                <img class="w-80 h-80 object-cover shrink-0" src="/pictures/luxury-manicure.webp" alt="Imagen 7">
+                                <img class="w-80 h-80 object-cover shrink-0" src="/pictures/polygel.webp" alt="Imagen 8">
+                                <img class="w-80 h-80 object-cover shrink-0" src="/pictures/rubber-base.webp" alt="Imagen 9">
+                                <img class="w-80 h-80 object-cover shrink-0" src="/pictures/simple-nail-art.webp" alt="Imagen 10">
+                                
                             </div>
-                            <div class="bg-red-500 absolute top-0 left-[3376px] flex items-center space-x-4 pr-4 shrink-0 gallery-loop">
-                                <div class="w-80 h-80 shrink-0 flex items-center justify-center text-5xl font-bold text-white bg-black">1</div>
-                                <div class="w-80 h-80 shrink-0 flex items-center justify-center text-5xl font-bold text-white bg-black">2</div>
-                                <div class="w-80 h-80 shrink-0 flex items-center justify-center text-5xl font-bold text-white bg-black">3</div>
-                                <div class="w-80 h-80 shrink-0 flex items-center justify-center text-5xl font-bold text-white bg-black">4</div>
-                                <div class="w-80 h-80 shrink-0 flex items-center justify-center text-5xl font-bold text-white bg-black">5</div>
-                                <div class="w-80 h-80 shrink-0 flex items-center justify-center text-5xl font-bold text-white bg-black">6</div>
-                                <div class="w-80 h-80 shrink-0 flex items-center justify-center text-5xl font-bold text-white bg-black">7</div>
-                                <div class="w-80 h-80 shrink-0 flex items-center justify-center text-5xl font-bold text-white bg-black">8</div>
-                                <div class="w-80 h-80 shrink-0 flex items-center justify-center text-5xl font-bold text-white bg-black">9</div>
-                                <div class="w-80 h-80 shrink-0 flex items-center justify-center text-5xl font-bold text-white bg-black">10</div>
-                               <!-- First set of images -->
-                                <!-- <img class="w-80 h-80 object-cover shrink-0" src="/pictures/gallery1.webp" alt="Imagen 1">
-                                <img class="w-80 h-80 object-cover shrink-0" src="/pictures/gallery2.webp" alt="Imagen 2">
-                                <img class="w-80 h-80 object-cover shrink-0" src="/pictures/gallery3.webp" alt="Imagen 3">
-                                <img class="w-80 h-80 object-cover shrink-0" src="/pictures/gallery4.webp" alt="Imagen 4">
-                                <img class="w-80 h-80 object-cover shrink-0" src="/pictures/gallery5.webp" alt="Imagen 5">
-                                <img class="w-80 h-80 object-cover shrink-0" src="/pictures/gallery6.webp" alt="Imagen 6">
-                                <img class="w-80 h-80 object-cover shrink-0" src="/pictures/gallery7.webp" alt="Imagen 7">
-                                <img class="w-80 h-80 object-cover shrink-0" src="/pictures/gallery8.webp" alt="Imagen 8">
-                                <img class="w-80 h-80 object-cover shrink-0" src="/pictures/gallery9.webp" alt="Imagen 9">
-                                <img class="w-80 h-80 object-cover shrink-0" src="/pictures/gallery10.webp" alt="Imagen 10">
-                                 -->
+                            <div class="absolute top-0 left-[3376px] flex items-center space-x-4 pr-4 shrink-0 gallery-loop">
                                 <!-- Second set of images (identical to the first) -->
-                                <!-- <img class="w-80 h-80 object-cover shrink-0" src="/pictures/gallery1.webp" alt="Imagen 1">
-                                <img class="w-80 h-80 object-cover shrink-0" src="/pictures/gallery2.webp" alt="Imagen 2">
-                                <img class="w-80 h-80 object-cover shrink-0" src="/pictures/gallery3.webp" alt="Imagen 3">
-                                <img class="w-80 h-80 object-cover shrink-0" src="/pictures/gallery4.webp" alt="Imagen 4">
-                                <img class="w-80 h-80 object-cover shrink-0" src="/pictures/gallery5.webp" alt="Imagen 5">
-                                <img class="w-80 h-80 object-cover shrink-0" src="/pictures/gallery6.webp" alt="Imagen 6">
-                                <img class="w-80 h-80 object-cover shrink-0" src="/pictures/gallery7.webp" alt="Imagen 7">
-                                <img class="w-80 h-80 object-cover shrink-0" src="/pictures/gallery8.webp" alt="Imagen 8">
-                                <img class="w-80 h-80 object-cover shrink-0" src="/pictures/gallery9.webp" alt="Imagen 9">
-                                <img class="w-80 h-80 object-cover shrink-0" src="/pictures/gallery10.webp" alt="Imagen 10">
-                                 -->
+                                <img class="w-80 h-80 object-cover shrink-0" src="/pictures/acrylic-nails.webp" alt="Imagen 1">
+                                <img class="w-80 h-80 object-cover shrink-0" src="/pictures/advanced-nail-art.webp" alt="Imagen 2">
+                                <img class="w-80 h-80 object-cover shrink-0" src="/pictures/builder-gel.webp" alt="Imagen 3">
+                                <img class="w-80 h-80 object-cover shrink-0" src="/pictures/french-manicure.webp" alt="Imagen 4">
+                                <img class="w-80 h-80 object-cover shrink-0" src="/pictures/gel-x.webp" alt="Imagen 5">
+                                <img class="w-80 h-80 object-cover shrink-0" src="/pictures/intermediate-nail-art.webp" alt="Imagen 6">
+                                <img class="w-80 h-80 object-cover shrink-0" src="/pictures/luxury-manicure.webp" alt="Imagen 7">
+                                <img class="w-80 h-80 object-cover shrink-0" src="/pictures/polygel.webp" alt="Imagen 8">
+                                <img class="w-80 h-80 object-cover shrink-0" src="/pictures/rubber-base.webp" alt="Imagen 9">
+                                <img class="w-80 h-80 object-cover shrink-0" src="/pictures/simple-nail-art.webp" alt="Imagen 10">
+                                
                             </div>
                             
                         </div>
-
+                        <!-- footer {
+                            box-shadow: 0 -20px 40px -10px #fffcdc;
+                          } -->
                     </section>
-
                 </main>
-                <footer class="bg-hover grid grid-cols-2 justify-center items-center w-full h-[60vh] ">
-                    <div class="flex flex-row justify-center items-center w-full h-full space-x-15">
-                        <img class="w-70 h-70" src="/logos/logo.webp" alt="Debh Nails logo">
-                        <div class="w-px bg-black h-64"></div>
-                        <ul class="flex flex-col items-start space-y-10">
-                            <li>
-                                <a href="tel:+15029755722" class="flex flex-row justify-center items-center space-x-2">
-                                    <img class="w-7 h-7" src="/logos/phone.svg">
-                                    <span>502 975-5722</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="" class="flex flex-row justify-center items-center space-x-2">
-                                    <img class="w-7 h-7" src="/logos/instagram.svg">
-                                    <span>Instagram</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="" class="flex flex-row justify-center items-center space-x-2">
-                                    <img class="w-7 h-7" src="/logos/tiktok.svg">
-                                    <span>Tiktok</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://debhnails.com/" class="flex flex-row justify-center items-center space-x-2">
-                                    <img class="w-7 h-7" src="/logos/tiktok.svg">
-                                    <span>debhnails.com</span>
-                                </a>
-                            </li>
-                        </ul>
+                <footer class="flex justify-center items-center w-full h-[60dvh] space-x-15 bg-gradient-to-bl from-primary to-secondary">
+                    <div class="flex justify-center items-center w-60 h-60">
+                        <img class="w-full h-full" src="/logos/logo.webp" alt="Debh Nails logo">    
                     </div>
+                    <div class="flex w-0.5 h-60 bg-gray-700"></div>
+                    <div class="flex flex-col justify-center items-center w-60 h-60">
+                        <h3 class="text-2xl font-bold">Contact</h3>
+                        <p class="text-xl">502 975-5722</p>
+                        <p class="text-xl">debhnails@gmail.com</p>
+                        <p class="text-xl">debhnails.com</p>
+                    </div>
+                    
+
+
                 </footer>
             </div>
         </div>
