@@ -5,17 +5,44 @@
 @theme {
   --color-primary: #f1e5e2;  /*tono de beige rosado muy claro o crema rosado*/
   --color-secondary: #f7c6ce; /*tono de rosa*/
-  --color-text: black; 
-  --color-h1: #d1d5dc; /*tono de gris claro*/
-  --color-decorative: #E8CFC1; /*tono de beige rosado claro*/
   --color-hover: #D9A18A; /*tono de marrón claro*/
-
-  --font-title: Eras Light ITC;
-  --font-text: Centaur;
-  --font-decorative: Freestyle Script;
 
 }
 
+/*-------------text styles-------------*/
+  .text-h1 {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 300;
+    font-size: 3rem;
+    color: #454545;
+    transform: scaleY(1.3);
+  }
+
+  .text-h2 {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 200;
+    font-size: 5rem;
+    color: #454545;
+    transform: scaleY(1.7);
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    opacity: 0.5;
+  }
+
+  .text-h3 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 2rem;
+    color: #454545;
+    opacity: 0.5;
+  }
+
+  .text-paragraph {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: #222220;
+  }
 /*-------------header pictures animation-------------*/
   @keyframes header-pictures {
     0% {

@@ -47,11 +47,12 @@ function Rotation() {
         ctx: contextLogo,
         text: "NAIL STUDIO",
         radius: 235,
-        fontSize: 70,
+        fontSize: 80,
+        weight: "200",
         centerX: canvasLogo.width / 2,
         centerY: canvasLogo.height / 2,
         rotationAngle: 0,
-        angleIncrement: Math.PI / "NAIL STUDIO".length,
+        angleIncrement: Math.PI / ("NAIL STUDIO".length*1.3),
         hasImage: true
     };
     const img = new Image();
@@ -67,10 +68,11 @@ function Rotation() {
         text: "WHAT WE DO",
         radius: 120,
         fontSize: 30,
+        weight: "200",
         centerX: canvasTextGallery.width / 2,
         centerY: canvasTextGallery.height / 2,
         rotationAngle: 0,
-        angleIncrement: Math.PI / "WHAT WE DO".length,
+        angleIncrement: Math.PI / ("WHAT WE DO".length*1.3),
         hasImage: false
     };
 
@@ -81,8 +83,8 @@ function Rotation() {
             const imgSize = 500;
             logo.ctx.drawImage(img, logo.centerX - imgSize / 2, logo.centerY - imgSize / 2, imgSize, imgSize);
         }
-        logo.ctx.font = `${logo.fontSize}px Eras Light ITC`;
-        logo.ctx.fillStyle = "#333333";
+        logo.ctx.font = `${logo.weight} ${logo.fontSize}px IBM Plex Sans`;
+        logo.ctx.fillStyle = "#454545";
         logo.ctx.textAlign = "center";
         logo.ctx.textBaseline = "alphabetic";
         for (let i = 0; i < logo.text.length; i++) {
@@ -90,7 +92,7 @@ function Rotation() {
             const x = logo.centerX + logo.radius * Math.cos(angle);
             const y = logo.centerY + logo.radius * Math.sin(angle);
             logo.ctx.save();
-            logo.ctx.globalAlpha = 0.7; // Text opacity 
+            logo.ctx.globalAlpha = 0.4; // Text opacity 
             logo.ctx.translate(x, y);
             logo.ctx.rotate(angle + Math.PI / 2);
             logo.ctx.fillText(logo.text[i], 0, 0);
@@ -100,8 +102,8 @@ function Rotation() {
 
         // Text Gallery
         textGallery.ctx.clearRect(0, 0, textGallery.canvas.width, textGallery.canvas.height);
-        textGallery.ctx.font = `${textGallery.fontSize}px Eras Light ITC`;
-        textGallery.ctx.fillStyle = "#333333";
+        textGallery.ctx.font = `${textGallery.weight} ${textGallery.fontSize}px IBM Plex Sans`;
+        textGallery.ctx.fillStyle = "#454545";
         textGallery.ctx.textAlign = "center";
         textGallery.ctx.textBaseline = "alphabetic";
         for (let i = 0; i < textGallery.text.length; i++) {
@@ -109,6 +111,7 @@ function Rotation() {
             const x = textGallery.centerX + textGallery.radius * Math.cos(angle);
             const y = textGallery.centerY + textGallery.radius * Math.sin(angle);
             textGallery.ctx.save();
+            textGallery.ctx.globalAlpha = 0.4; // Text opacity 
             textGallery.ctx.translate(x, y);
             textGallery.ctx.rotate(angle + Math.PI / 2);
             textGallery.ctx.fillText(textGallery.text[i], 0, 0);
@@ -143,34 +146,62 @@ function SmoothScroll() {
 };
 
 function PinningEffect() {
-    // Pinning de la sección completa y las imágenes
+    // Pinning section and images
     const pinSection = document.querySelector(".pin-imgs-section");
     const pinImgsContainer = document.querySelector(".pin-imgs-container");
     const pinImgs = gsap.utils.toArray(".pin-img");
+
+    // h3 title animation
+    const pinTitle = document.getElementById("pin-title");
+    const pinTitles = ["Design", "Style", "Personality"];
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const imgIndex = pinImgs.indexOf(entry.target);
+                if (pinTitle && pinTitles[imgIndex]) {
+                    pinTitle.textContent = pinTitles[imgIndex];
+                    pinTitle.classList.remove("animate-blurred-fade-in", "animate-duration-1000");
+                    void pinTitle.offsetWidth;
+                    pinTitle.classList.add("animate-blurred-fade-in", "animate-duration-1000");
+                }
+            }
+            if (!entry.isIntersecting) {
+                const imgIndex = pinImgs.indexOf(entry.target);
+                if (pinTitle && pinTitles[imgIndex]) {
+                    if (imgIndex === 0) return;
+                    pinTitle.textContent = pinTitles[imgIndex - 1];
+                    pinTitle.classList.remove("animate-blurred-fade-in", "animate-duration-1000");
+                    void pinTitle.offsetWidth;
+                    pinTitle.classList.add("animate-blurred-fade-in", "animate-duration-1000");
+                }
+            }
+        });
+    }, { threshold: 0.1 });
+
+    pinImgs.forEach(img => observer.observe(img));
     
+
+
     if (pinSection && pinImgsContainer && pinImgs.length) {
-        // Calcular la altura total necesaria para el scroll
+        // Calculate the total height needed for the scroll
         const containerHeight = pinImgsContainer.getBoundingClientRect().height;
-        const totalHeight = containerHeight * (pinImgs.length); // -1 porque la primera imagen no se mueve
-        
-        
-        
-        // Asegurarnos que el contenedor padre tenga overflow hidden
+        const totalHeight = containerHeight * (pinImgs.length); 
+
+        // Make sure the parent container has overflow hidden
         pinImgsContainer.style.overflow = "hidden";
         
-        // Fijar la sección completa durante el scroll
+        // Fix the section during the scroll
         ScrollTrigger.create({
             trigger: pinSection,
             start: "top top",
-            end: `bottom+=${totalHeight} bottom`, // Ajustamos para que dure hasta que la última imagen esté completamente visible
+            end: `bottom+=${totalHeight} bottom`, // Adjust to make it last until the last image is completely visible
             pin: true,
             pinSpacing: true,
         });
 
-        // Animar cada imagen para que se apile
+        // Animate each image to stack
         pinImgs.forEach((img, index) => {
             if (index === 0) return;
-            
             gsap.fromTo(img, 
                 {
                     y: containerHeight * index,
@@ -189,7 +220,6 @@ function PinningEffect() {
                         scrub: 1,
                     }
                 }
-
             );
         });
     };

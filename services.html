@@ -3,6 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;700&family=Montserrat:wght@100;200;300;400;700&display=swap" rel="stylesheet">
         <script type="module" src="/src/main.js"></script>
         <title>Services</title>
         <style>
@@ -23,40 +26,40 @@
         <div class="smooth-wrapper">
             <div class="smooth-content">
                 <header class="flex flex-col justify-center items-center w-full h-screen mt-20">
-                    <img class="w-50 h-50 mb-40 animate-fade-in-up parallax-img" 
+                    <img class="w-50 h-50 mb-20 animate-fade-in-up animate-delay-500 animate-duration-1000 parallax-img" 
                     id="logo" src="logos/logo.webp" 
                     alt="Debh Nails logo"
                     loading="lazy"
                     data-parallax-y="500"
                     data-start-point="top center">
                     
-                    <p class="text-center text-4xl animate-fade-in parallax-container" 
+                    <h1 class="text-center text-h1 animate-fade-in animate-duration-1000 parallax-container" 
                     id="headerText" 
                     data-parallax-y="200"
                     data-start-point="top center">
                         Lorem ipsum dolor sit amet<br> 
                         consectetur adipiscing elit.
-                    </p>
+                    </h1>
                 </header>   
                 <main class="flex flex-col justify-center items-center w-full">
                     <!-- three pictures with text and parallax effect -->
                     <section class="flex flex-col w-full gap-20 px-40">
-                        <p class="text-center text-6xl my-10 parallax-container"
+                        <h2 class="text-center text-h2 my-10 parallax-container"
                         data-parallax-y="80"
                         data-start-point="top center">
-                            Get a whole new vibe with a fresh nail set
-                        </p>
+                            Set the vibe
+                        </h2>
                         <div class="flex items-end space-x-10 w-[700px] h-[350px] self-center overflow-hidden">
                             <img class="w-full h-full object-cover shadow-md shadow-black/70" 
                             src="/pictures/test1.webp" 
                             alt="Colours"
                             loading="lazy">
-                            <span class="text-center text-4xl">Colours</span>
+                            <span class="text-center text-h3">Colours</span>
                         </div>
                         <div class="flex flex-col items-end space-y-5 self-end w-[550px] h-[380px] overflow-hidden parallax-container" 
                         data-parallax-y="300"
                         data-start-point="top bottom">
-                            <span class="text-center text-4xl parallax-container"
+                            <span class="text-center text-h3 parallax-container"
                             data-parallax-y="10"
                             data-start-point="top bottom">
                                 Design
@@ -77,15 +80,16 @@
                             loading="lazy"
                             data-parallax-y="100"
                             data-start-point="top bottom">
-                            <span class="text-center text-4xl parallax-container"
+                            <span class="text-center text-h3 parallax-container"
                             data-parallax-y="50"
                             data-start-point="top bottom">Personality</span>
                         </div>
                     </section>
                     <!-- Services -->
-                    <p class="text-center text-6xl mb-40 parallax-container"
-                    data-parallax-y="50"
-                    data-start-point="top bottom">Our Services</p>
+                    <h2 class="text-center text-h2 mb-40 parallax-container"
+                        data-parallax-y="50"
+                        data-start-point="top bottom">Our Services
+                    </h2>
                      <section class="flex justify-between items-start w-full h-screen mb-40 px-40 py-1.5 services-section overflow-hidden">
                         <!-- servicios manicure -->
                         <div class="flex flex-col justify-center items-center w-72 space-y-5 side-div">
@@ -94,42 +98,42 @@
                                 <div class="w-full h-52 object-cover">
                                     <img class="w-full h-full rounded-2xl object-cover" src="/pictures/rubber-base.webp" alt="Manicure">
                                 </div>
-                                <p class="text-center text-2xl my-2">Rubber Base</p>
+                                <span class="text-center text-paragraph my-2">Rubber Base</span>
                             </div>
                             <div class="bg-secondary service-card flex flex-col justify-center items-center w-full p-0.5 rounded-2xl object-cover transition-transform duration-300 hover:scale-105 cursor-pointer"
                             id="polygel">
                                 <div class="w-full h-52 object-cover">
                                     <img class="w-full h-full rounded-2xl object-cover" src="/pictures/polygel.webp" alt="Manicure">
                                 </div>
-                                <p class="text-center text-2xl my-2">Polygel</p>
+                                <span class="text-center text-paragraph my-2">Polygel</span>
                             </div>
                             <div class="bg-secondary service-card flex flex-col justify-center items-center w-full p-0.5 rounded-2xl object-cover transition-transform duration-300 hover:scale-105 cursor-pointer"
                             id="gel-x">
                                 <div class="w-full h-52 object-cover">
                                     <img class="w-full h-full rounded-2xl object-cover" src="/pictures/gel-x.webp" alt="Manicure">
                                 </div>
-                                <p class="text-center text-2xl my-2">Gel-X</p>
+                                <span class="text-center text-paragraph my-2">Gel-X</span>
                             </div>
                             <div class="bg-secondary service-card flex flex-col justify-center items-center w-full p-0.5 rounded-2xl object-cover transition-transform duration-300 hover:scale-105 cursor-pointer"
                             id="simple-nail-art">
                                 <div class="w-full h-52 object-cover">
                                     <img class="w-full h-full rounded-2xl object-cover" src="/pictures/simple-nail-art.webp" alt="Manicure">
                                 </div>
-                                <p class="text-center text-2xl my-2">Simple Nail Art</p>
+                                <span class="text-center text-paragraph my-2">Simple Nail Art</span>
                             </div>
                             <div class="bg-secondary service-card flex flex-col justify-center items-center w-full p-0.5 rounded-2xl object-cover transition-transform duration-300 hover:scale-105 cursor-pointer"
                             id="intermediate-nail-art">
                                 <div class="w-full h-52 object-cover">
                                     <img class="w-full h-full rounded-2xl object-cover" src="/pictures/intermediate-nail-art.webp" alt="Manicure">
                                 </div>
-                                <p class="text-center text-2xl my-2">Intermediate Nail Art</p>
+                                <span class="text-center text-paragraph my-2">Intermediate Nail Art</span>
                             </div>
                             <div class="bg-secondary service-card flex flex-col justify-center items-center w-full p-0.5 rounded-2xl object-cover transition-transform duration-300 hover:scale-105 cursor-pointer"
                             id="advanced-nail-art">
                                 <div class="w-full h-52 object-cover">
                                     <img class="w-full h-full rounded-2xl object-cover" src="/pictures/advanced-nail-art.webp" alt="Manicure">
                                 </div>
-                                <p class="text-center text-2xl my-2">Advanced Nail Art</p>
+                                <span class="text-center text-paragraph my-2">Advanced Nail Art</span>
                             </div>
                         </div>
                         <!-- servicios Nail enhancement -->
@@ -139,35 +143,35 @@
                                 <div class="w-full h-52 object-cover">
                                     <img class="w-full h-full rounded-2xl object-cover" src="/pictures/french-manicure.webp" alt="Manicure">
                                 </div>
-                                <p class="text-center text-2xl my-2">French Manicure</p>
+                                <span class="text-center text-paragraph my-2">French Manicure</span>
                             </div>
                             <div class="bg-secondary service-card flex flex-col justify-center items-center w-full p-0.5 rounded-2xl object-cover transition-transform duration-300 hover:scale-105 cursor-pointer"
                             id="acrylic-nails">
                                 <div class="w-full h-52 object-cover">
                                     <img class="w-full h-full rounded-2xl object-cover" src="/pictures/acrylic-nails.webp" alt="Manicure">
                                 </div>
-                                <p class="text-center text-2xl my-2">Acrylic Nails</p>
+                                <span class="text-center text-paragraph my-2">Acrylic Nails</span>
                             </div>
                             <div class="bg-secondary service-card flex flex-col justify-center items-center w-full p-0.5 rounded-2xl object-cover transition-transform duration-300 hover:scale-105 cursor-pointer"
                             id="builder-gel">
                                 <div class="w-full h-52 object-cover">
                                     <img class="w-full h-full rounded-2xl object-cover" src="/pictures/builder-gel.webp" alt="Manicure">
                                 </div>
-                                <p class="text-center text-2xl my-2">Builder Gel</p>
+                                <span class="text-center text-paragraph my-2">Builder Gel</span>
                             </div>
                             <div class="bg-secondary service-card flex flex-col justify-center items-center w-full p-0.5 rounded-2xl object-cover transition-transform duration-300 hover:scale-105 cursor-pointer"
                             id="russian-manicure">
                                 <div class="w-full h-52 object-cover">
                                     <img class="w-full h-full rounded-2xl object-cover" src="/pictures/russian-manicure.webp" alt="Manicure">
                                 </div>
-                                <p class="text-center text-2xl my-2">Russian Manicure</p>
+                                <span class="text-center text-paragraph my-2">Russian Manicure</span>
                             </div>
                             <div class="bg-secondary service-card flex flex-col justify-center items-center w-full p-0.5 rounded-2xl object-cover transition-transform duration-300 hover:scale-105 cursor-pointer"
                             id="luxury-manicure">
                                 <div class="w-full h-52 object-cover">
                                     <img class="w-full h-full rounded-2xl object-cover" src="/pictures/luxury-manicure.webp" alt="Manicure">
                                 </div>
-                                <p class="text-center text-2xl my-2">Luxury Manicure</p>
+                                <span class="text-center text-paragraph my-2">Luxury Manicure</span>
                             </div>
 
 
@@ -176,7 +180,7 @@
                                 <div class="w-full h-52 object-cover">
                                     <img class="w-full h-full rounded-2xl object-cover" src="/pictures/gallery6.webp" alt="Manicure">
                                 </div>
-                                <p class="text-center text-2xl my-2">Service 6</p>
+                                <span class="text-center text-paragraph my-2">Service 6</span>
                             </div>
                         </div>
                         
@@ -232,8 +236,8 @@
                                 </video>
                             </div>
                             <div class="flex flex-col w-full justify-center items-center gap-10">
-                                <h2 class="text-center text-4xl">Acrylic Nails</h2>
-                                <p class="text-2xl">Lorem ipsum dolor sit amet consectetur<br>
+                                <h3 class="text-center text-h3">Acrylic Nails</h3>
+                                <p class="text-paragraph">Lorem ipsum dolor sit amet consectetur<br>
                                      adipisicing elitQuisquam, quos
                                 </p>
                             </div>
@@ -246,8 +250,8 @@
                                 </video>
                             </div>
                             <div class="flex flex-col w-full justify-center items-center gap-10">
-                                <h2 class="text-center text-4xl">whatever Nails</h2>
-                                <p class="text-2xl">Lorem ipsum dolor sit amet consectetur<br>
+                                <h3 class="text-center text-paragraph">whatever Nails</h3>
+                                <p class="text-paragraph">Lorem ipsum dolor sit amet consectetur<br>
                                      adipisicing elitQuisquam, quos
                                 </p>
                             </div>
@@ -260,8 +264,8 @@
                                 </video>
                             </div>
                             <div class="flex flex-col w-full justify-center items-center gap-10">
-                                <h2 class="text-center text-4xl">Gel Nails</h2>
-                                <p class="text-2xl">Lorem ipsum dolor sit amet consectetur<br>
+                                <h3 class="text-center text-paragraph">Gel Nails</h3>
+                                <p class="text-paragraph">Lorem ipsum dolor sit amet consectetur<br>
                                      adipisicing elitQuisquam, quos
                                 </p>
                             </div>
@@ -272,28 +276,14 @@
                         <div class="flex justify-center items-center w-2/3 h-2/3">
                             <img class="w-full h-full object-cover" src="/pictures/test4.webp" alt="Deboritah">
                         </div>
-                        <h2 class="text-center text-4xl">About Deboritah</h2>
-                        <p class="text-2xl">Lorem ipsum dolor sit amet consectetur adipisicing elit.<br>
+                        <h2 class="text-center text-h2">About Deboritah</h2>
+                        <p class="text-paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit.<br>
                              Error dolorem in quis explicabo itaque quo, <br>
                              quod officia dolores nobis optio?
                         </p>
                      </section>
                 </main>
-                <footer class="flex justify-center items-center w-full h-[60dvh] space-x-15 bg-gradient-to-bl from-primary to-secondary">
-                    <div class="flex justify-center items-center w-60 h-60">
-                        <img class="w-full h-full" src="/logos/logo.webp" alt="Debh Nails logo">    
-                    </div>
-                    <div class="flex w-0.5 h-60 bg-gray-700"></div>
-                    <div class="flex flex-col justify-center items-center w-60 h-60">
-                        <h3 class="text-2xl font-bold">Contact</h3>
-                        <p class="text-xl">502 975-5722</p>
-                        <p class="text-xl">debhnails@gmail.com</p>
-                        <p class="text-xl">debhnails.com</p>
-                    </div>
-                    
-
-
-                </footer>  
+                 
             </div>
         </div> 
         <!--Modal expanded card -->

@@ -3,6 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;700&family=Montserrat:wght@100;200;300;400;700&display=swap" rel="stylesheet">
         <script type="module" src="/src/main.js"></script>
         <title>Debh Nails</title>
         <style>
@@ -22,21 +25,12 @@
         </nav>
         <div class="smooth-wrapper">
             <div class="smooth-content">
-                <!-- <div id="loading-overlay" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white">
-                    <div class="loading-animation flex flex-col items-center" style="height: 200px; position: relative;">
-                        <div id="logo-container" class="mb-4" style="position: absolute; top: 0;"></div>
-                        <div id="text" style="position: absolute; top: 150px; width: 200px;"></div>
-                    </div>
-                </div> -->
-                
                 <header class="relative flex flex-row justify-center w-full h-[60vh] ">    
-                    <img class="absolute left-10 top-5 w-30 h-30 animate-fade-in-right animate-delay-1000" id="logo" src="/logos/logo.webp" alt="Debh Nails logo">
-                    
-                    <p class="absolute top-70 text-center text-4xl animate-blurred-fade-in animate-delay-600 animate-duration-1000" id="headerText">
+                    <img class="absolute left-10 top-5 w-30 h-30 animate-fade-in-right animate-delay-1000" id="logo" src="/logos/logo.webp" alt="Debh Nails logo">                   
+                    <h1 class="absolute top-60 text-center text-h1 animate-blurred-fade-in animate-delay-600 animate-duration-1000" id="headerText">
                         Lorem ipsum dolor sit amet<br> 
                         consectetur adipiscing elit.
-                    </p>
-                        
+                    </h1>                
                 </header>
                 <main class="relative flex flex-col w-full" >
                     <div class="flex space-x-8 py-5 w-full h-screen header-pictures">
@@ -60,11 +54,11 @@
                         </div>
                     </div>
                     <!-----------------------------------------logo animation -->
-                    <section class="flex items-center justify-around w-full h-auto my-10">
+                    <section class="flex items-center justify-around gap-10 w-full my-10">
                         <div class="w-auto h-auto flex justify-center items-center parallax-container" data-parallax-y="500" data-parallax-x="100">
                             <canvas id="rotatingLogo" width="600" height="600"></canvas>
                         </div>
-                        <p class="font-text text-3xl text-center parallax-container" data-parallax-y="500" data-parallax-x="-100">
+                        <p class="text-center text-paragraph parallax-container" data-parallax-y="500" data-parallax-x="-100">
                             Debh Nails is a Louisville-based nail studio <br>
                             specializing in trendy nail art and innovative designs.<br>
                             Here, every set of nails is all about fun, style,<br>
@@ -73,15 +67,13 @@
                     </section>
                     <!-----------------------------------------We are -->
                     <section class="pin-imgs-section">
-                        <h2 class="text-center text-7xl font-text mb-20">We are</h2>
+                        <h2 class="text-center text-h2 mb-15 mt-5">We are</h2>
                         <!-----------------------------------------Design -->
-                        <div class="grid grid-cols-3 gap-20 px-40 justify-around items-center w-full h-[75vh]">
-
-                          <!-- Texto e imagen pequeña (Hacer que el h3 cambie la palabra: Design, Style, Personality)-->
+                        <div class="grid grid-cols-3 gap-20 px-40 justify-around items-center w-full h-[75vh]">                        
                             <div class="flex flex-col gap-6 h-full justify-between items-center">
                                 <div class="">
-                                    <h3 class="text-2xl font-semibold uppercase mb-4">Design</h3>
-                                    <p class="text-xl">
+                                    <h3 class="text-h3 mb-4" id="pin-title">Design</h3>
+                                    <p class="text-paragraph">
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br>
                                         Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                                     </p>
@@ -92,8 +84,7 @@
                                         loading="lazy">
                                 </div>
                             </div>
-                      
-                          <!-- Imagen grande -->
+
                             <div class="relative flex-col col-span-2 w-full h-full items-start shadow-md shadow-black/70 pin-imgs-container">
                                 <div class="relative flex w-full h-full object-cover pin-img" id="first-img">
                                     <img class="absolute top-0 left-0 w-full h-full object-cover"
@@ -118,7 +109,7 @@
 
                     <!-----------------------------------------gallery-->
                     <section class="relative flex w-full h-screen justify-end items-end my-10">
-                        <div class="absolute top-72 left-80 -z-10 w-auto h-auto flex justify-center items-center opacity-50">
+                        <div class="absolute top-72 left-80 -z-10 w-auto h-auto flex justify-center items-center">
                             <canvas id="rotatingTextGallery" width="300" height="300"></canvas>
                         </div>
                         <div class="relative flex items-center overflow-hidden w-[1024px] h-80 mb-20">
@@ -158,20 +149,31 @@
                           } -->
                     </section>
                 </main>
-                <footer class="flex justify-center items-center w-full h-[60dvh] space-x-15 bg-gradient-to-bl from-primary to-secondary">
-                    <div class="flex justify-center items-center w-60 h-60">
+                <footer class="flex justify-center items-center w-full h-[60dvh] space-x-20 bg-gradient-to-bl from-primary to-secondary">
+                    <div class="flex justify-center items-center w-70 h-70">
                         <img class="w-full h-full" src="/logos/logo.webp" alt="Debh Nails logo">    
                     </div>
-                    <div class="flex w-0.5 h-60 bg-gray-700"></div>
-                    <div class="flex flex-col justify-center items-center w-60 h-60">
-                        <h3 class="text-2xl font-bold">Contact</h3>
-                        <p class="text-xl">502 975-5722</p>
-                        <p class="text-xl">debhnails@gmail.com</p>
-                        <p class="text-xl">debhnails.com</p>
-                    </div>
-                    
-
-
+                    <hr class="w-0.5 h-70 bg-gray-600">
+                    <div class="flex w-60 h-60">
+                        <ul class="flex flex-col w-full h-full justify-center items-start gap-10">
+                            <li class="flex justify-center items-center gap-3 hover:scale-105 transition-all duration-200">
+                                <img class="w-7 h-7" src="/logos/instagram.svg" alt="Instagram logo">
+                                <a href="" class="flex justify-center items-center text-paragraph">Instagram</a>
+                            </li>
+                            <li class="flex justify-center items-center gap-3 hover:scale-105 transition-all duration-200">
+                                <img class="w-7 h-7" src="/logos/tiktok.svg" alt="TikTok logo">
+                                <a href="" class="flex justify-center items-center text-paragraph">TikTok</a>
+                            </li>
+                            <li class="flex justify-center items-center gap-3 hover:scale-105 transition-all duration-200">
+                                <img class="w-7 h-7" src="/logos/phone.svg" alt="Phone logo">
+                                <a href="" class="flex justify-center items-center text-paragraph">502 975-5722</a>
+                            </li>
+                            <li class="flex justify-center items-center gap-3 hover:scale-105 transition-all duration-200">
+                                <img class="w-7 h-7" src="/logos/location.svg" alt="Location logo">
+                                <a href="" class="flex justify-center items-center text-paragraph">Louisville, KY</a>
+                            </li>
+                        </ul>
+                    </div> 
                 </footer>
             </div>
         </div>
