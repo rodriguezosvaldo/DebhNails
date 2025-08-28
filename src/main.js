@@ -53,7 +53,9 @@ function Rotation() {
         centerY: canvasLogo.height / 2,
         rotationAngle: 0,
         angleIncrement: Math.PI / ("NAIL STUDIO".length*1.3),
-        hasImage: true
+        hasImage: true,
+        cssSize: 600,
+        dpr: Math.max(1, window.devicePixelRatio || 1)
     };
     const img = new Image();
     img.src = "/logos/logo.webp";
@@ -76,11 +78,37 @@ function Rotation() {
         hasImage: false
     };
 
+    function setLogoCanvasSize() {
+        // Desired base size is 600px at >=768px; smaller screens scale down
+        const viewportWidth = window.innerWidth || 800;
+        const targetCssSize = viewportWidth >= 768 ? 600 : Math.max(220, Math.min(600, Math.floor(viewportWidth * 0.8)));
+        logo.cssSize = targetCssSize;
+        logo.dpr = Math.max(1, window.devicePixelRatio || 1);
+
+        // Set backing store to cssSize * dpr for crispness
+        logo.canvas.width = Math.floor(targetCssSize * logo.dpr);
+        logo.canvas.height = Math.floor(targetCssSize * logo.dpr);
+        logo.canvas.style.width = `${targetCssSize}px`;
+        logo.canvas.style.height = `${targetCssSize}px`;
+
+        // Normalize drawing to CSS pixels
+        logo.ctx.setTransform(logo.dpr, 0, 0, logo.dpr, 0, 0);
+
+        // Recompute metrics relative to 600px base
+        const scale = targetCssSize / 600;
+        logo.centerX = targetCssSize / 2;
+        logo.centerY = targetCssSize / 2;
+        logo.radius = 235 * scale;
+        logo.fontSize = 80 * scale;
+        logo.imgSize = 500 * scale;
+    }
+
     function drawRotatingText() {
         // Logo
-        logo.ctx.clearRect(0, 0, logo.canvas.width, logo.canvas.height);
+        // Clear using CSS pixel coords (transform already applied)
+        logo.ctx.clearRect(0, 0, logo.cssSize, logo.cssSize);
         if (logo.hasImage && img.complete) {
-            const imgSize = 500;
+            const imgSize = logo.imgSize || 500;
             logo.ctx.drawImage(img, logo.centerX - imgSize / 2, logo.centerY - imgSize / 2, imgSize, imgSize);
         }
         logo.ctx.font = `${logo.weight} ${logo.fontSize}px IBM Plex Sans`;
@@ -122,13 +150,20 @@ function Rotation() {
         requestAnimationFrame(drawRotatingText);
     }
 
-    img.onload = function() {
-        drawRotatingText();
-    };
-    // Si la imagen ya está cargada (por caché), iniciar de inmediato
-    if (img.complete) {
+    function initLogoCanvas() {
+        setLogoCanvasSize();
         drawRotatingText();
     }
+
+    img.onload = function() { initLogoCanvas(); };
+    if (img.complete) { initLogoCanvas(); }
+
+    // Resize handler to keep canvas responsive
+    window.addEventListener('resize', () => {
+        const prevSize = logo.cssSize;
+        setLogoCanvasSize();
+        // Avoid jump in rotation on resize; keep angle
+    });
 };
 
 function SmoothScroll() {
@@ -226,53 +261,78 @@ function PinningEffect() {
 };
 
 function ParallaxEffect() {
-    // Parallax for img containers
-    gsap.utils.toArray(".parallax-container").forEach(container => {
-        const yTransition = container.dataset.parallaxY !== undefined ? 
-                        parseInt(container.dataset.parallaxY) : 0;
-        const xTransition = container.dataset.parallaxX !== undefined ?
-                        parseInt(container.dataset.parallaxX) : 0;
-        const startPoint = container.dataset.startPoint !== undefined ?
-                        container.dataset.startPoint : "top bottom"; 
-                    
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
 
-        gsap.to(container, {
-            scrollTrigger: {
-                trigger: container,
-                toggleActions: "play none reverse none",
-                start: startPoint, //me quede aki, darle start a cada elemento html
-                end: "bottom top",
-                scrub: 0.2,
-            },
-            y: -yTransition,
-            x: xTransition,
-            duration: 1,
-            ease: "none",
+    function killParallax() {
+        ScrollTrigger.getAll().forEach((st) => {
+            const triggerEl = st.trigger;
+            if (triggerEl && (triggerEl.classList.contains('parallax-container') || triggerEl.classList.contains('parallax-img'))) {
+                st.kill();
+            }
         });
-    });
+        gsap.set('.parallax-container, .parallax-img', { clearProps: 'x,y,transform' });
+    }
 
-    // Parallax for img
-    gsap.utils.toArray(".parallax-img").forEach(img => {
-        const yTransition = img.dataset.parallaxY !== undefined ? 
-                        parseInt(img.dataset.parallaxY) : 0;
-        const xTransition = img.dataset.parallaxX !== undefined ?
-                        parseInt(img.dataset.parallaxX) : 0;
-        const startPoint = img.dataset.startPoint !== undefined ?
-                        img.dataset.startPoint : "top bottom";
-                      
-        gsap.to(img, {
-            scrollTrigger: {
-                trigger: img,
-                toggleActions: "play none reverse none",
-                start: startPoint, 
-                end: "bottom top",
-                scrub: 0.2,
-            },
-            y: -yTransition,
-            x: xTransition,
-            duration: 1,
-            ease: "none",
+    function initParallax() {
+        if (!mediaQuery.matches) return;
+
+        // Parallax for img containers
+        gsap.utils.toArray('.parallax-container').forEach(container => {
+            const yTransition = container.dataset.parallaxY !== undefined ? parseInt(container.dataset.parallaxY) : 0;
+            const xTransition = container.dataset.parallaxX !== undefined ? parseInt(container.dataset.parallaxX) : 0;
+            const startPoint = container.dataset.startPoint !== undefined ? container.dataset.startPoint : 'top bottom';
+
+            gsap.to(container, {
+                scrollTrigger: {
+                    trigger: container,
+                    toggleActions: 'play none reverse none',
+                    start: startPoint,
+                    end: 'bottom top',
+                    scrub: 0.2,
+                },
+                y: -yTransition,
+                x: xTransition,
+                duration: 1,
+                ease: 'none',
+            });
         });
+
+        // Parallax for img
+        gsap.utils.toArray('.parallax-img').forEach(img => {
+            const yTransition = img.dataset.parallaxY !== undefined ? parseInt(img.dataset.parallaxY) : 0;
+            const xTransition = img.dataset.parallaxX !== undefined ? parseInt(img.dataset.parallaxX) : 0;
+            const startPoint = img.dataset.startPoint !== undefined ? img.dataset.startPoint : 'top bottom';
+
+            gsap.to(img, {
+                scrollTrigger: {
+                    trigger: img,
+                    toggleActions: 'play none reverse none',
+                    start: startPoint,
+                    end: 'bottom top',
+                    scrub: 0.2,
+                },
+                y: -yTransition,
+                x: xTransition,
+                duration: 1,
+                ease: 'none',
+            });
+        });
+    }
+
+    // Initialize based on current viewport
+    if (mediaQuery.matches) {
+        initParallax();
+    } else {
+        killParallax();
+    }
+
+    // Toggle on breakpoint changes
+    mediaQuery.addEventListener('change', (e) => {
+        if (e.matches) {
+            initParallax();
+        } else {
+            killParallax();
+        }
     });
 };
 
