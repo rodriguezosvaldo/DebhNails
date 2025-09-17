@@ -79,9 +79,9 @@ function Rotation() {
     };
 
     function setLogoCanvasSize() {
-        // Desired base size is 600px at >=768px; smaller screens scale down
+        // Desired base size is 600px at >=1024px; smaller screens scale down
         const viewportWidth = window.innerWidth || 800;
-        const targetCssSize = viewportWidth >= 768 ? 600 : Math.max(220, Math.min(600, Math.floor(viewportWidth * 0.8)));
+        const targetCssSize = viewportWidth >= 1024 ? 600 : Math.max(120, Math.min(400, Math.floor(viewportWidth * 0.8)));
         logo.cssSize = targetCssSize;
         logo.dpr = Math.max(1, window.devicePixelRatio || 1);
 
@@ -261,7 +261,7 @@ function PinningEffect() {
 };
 
 function ParallaxEffect() {
-    const mediaQuery = window.matchMedia('(min-width: 768px)');
+    const mediaQuery = window.matchMedia('(min-width: 1024px)');
 
     function killParallax() {
         ScrollTrigger.getAll().forEach((st) => {

@@ -17,7 +17,7 @@
     color: #454545;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     .text-h1 {
       font-family: "IBM Plex Sans", sans-serif;
       font-weight: 200;
@@ -41,7 +41,7 @@
     opacity: 0.5;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     .text-h2 {
       font-size: 5rem;
     }
@@ -54,7 +54,7 @@
     color: #454545;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     .text-h3 {
       font-size: 2rem;
     }
@@ -67,7 +67,7 @@
     color: #222220;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     .text-paragraph {
       font-size: 1.5rem;
     }

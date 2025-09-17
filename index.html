@@ -13,7 +13,7 @@
         </style>
     </head>
     <body class="flex flex-col text-text bg-primary justify-center items-center">
-        <nav class="inline-flex fixed top-5 md:right-5 z-10 justify-center items-center">
+        <nav class="inline-flex fixed top-5 lg:right-5 z-10 justify-center items-center">
             <ul class="inline-flex justify-around items-center p-2 rounded-4xl bg-transparent backdrop-blur-2xl">
                 <li><a href="index.html" class="px-3 hover:text-hover">Home</a></li>
                 <li><a href="services.html" class="px-3 hover:text-hover">Services</a></li>
@@ -25,27 +25,27 @@
         </nav>
         <div class="smooth-wrapper">
             <div class="smooth-content">
-                <header class="relative flex flex-col md:flex-row justify-center items-center gap-10 w-full h-[60vh] ">    
-                    <img class="md:absolute md:left-10 md:top-5 flex justify-center items-center w-30 h-30 animate-fade-in-right animate-delay-1000" id="logo" src="/logos/logo.webp" alt="Debh Nails logo">                   
-                    <h1 class="md:absolute md:top-60 flex justify-center items-center text-center text-h1 animate-blurred-fade-in animate-delay-600 animate-duration-1000" id="headerText">
+                <header class="relative flex flex-col lg:flex-row justify-center items-center gap-10 w-full h-[60vh] ">    
+                    <img class="lg:absolute lg:left-10 lg:top-5 flex justify-center items-center w-30 h-30 animate-fade-in-right animate-delay-1000" id="logo" src="/logos/logo.webp" alt="Debh Nails logo">                   
+                    <h1 class="lg:absolute lg:top-60 flex justify-center items-center text-center text-h1 animate-blurred-fade-in animate-delay-600 animate-duration-1000" id="headerText">
                         Where Nails Become Art
                     </h1>                
                 </header>
                 <main class="relative flex flex-col w-full p-5" >
-                    <div class="flex flex-col md:flex-row space-x-8 py-5 w-full md:h-screen header-pictures">
-                        <div class="flex justify-center items-center relative w-full md:w-1/3 md:h-[50%] md:mt-30 overflow-hidden shadow-md shadow-black/70 parallax-container" data-parallax-y="500">
-                            <img class="md:absolute md:top-0 md:left-0 w-full h-full md:w-[100%] md:h-[150%] object-cover parallax-img"  
+                    <div class="flex flex-col justify-center items-center lg:flex-row lg:space-x-8 lg:p-0 w-full h-screen header-pictures">
+                        <div class="flex justify-center items-center relative w-full md:w-2/3 h-2/3 lg:w-1/3 lg:h-[50%] lg:mt-30 overflow-hidden shadow-md shadow-black/70 parallax-container" data-parallax-y="500">
+                            <img class="lg:absolute lg:top-0 lg:left-0 w-full h-full lg:w-[100%] lg:h-[150%] object-cover parallax-img"  
                                 src="/pictures/test1.webp" 
                                 loading="lazy"
                                 data-parallax-y="200">
                         </div>
-                        <div class="hidden md:block relative w-1/3 h-[70%] mt-15 overflow-hidden shadow-md shadow-black/70 parallax-container" data-parallax-y="250">
+                        <div class="hidden lg:block relative w-1/3 h-[70%] mt-15 overflow-hidden shadow-md shadow-black/70 parallax-container" data-parallax-y="250">
                             <img class="absolute top-0 left-0 w-[100%] h-[150%] object-cover parallax-img" 
                                 src="/pictures/test4.webp"
                                 loading="lazy"
                                 data-parallax-y="200">               
                         </div>
-                        <div class="hidden md:block relative w-1/3 h-[60%] overflow-hidden shadow-md shadow-black/70 parallax-container" data-parallax-y="50">
+                        <div class="hidden lg:block relative w-1/3 h-[60%] overflow-hidden shadow-md shadow-black/70 parallax-container" data-parallax-y="50">
                             <img class="absolute top-0 left-0 w-[100%] h-[150%] object-cover parallax-img" 
                                 src="/pictures/test2.webp" 
                                 loading="lazy"
@@ -53,7 +53,7 @@
                         </div>
                     </div>
                     <!-----------------------------------------logo animation -->
-                    <section class="flex flex-col md:flex-row items-center justify-around md:gap-10 w-full h-screen md:h-auto my-10">
+                    <section class="flex flex-col lg:flex-row items-center justify-center gap-10 lg:justify-around lg:gap-10 w-full h-screen lg:h-auto my-10 -mt-40 lg:mt-40">
                         <div class="w-auto h-auto flex justify-center items-center parallax-container" data-parallax-y="500" data-parallax-x="100">
                             <canvas id="rotatingLogo" width="600" height="600"></canvas>
                         </div>
@@ -67,8 +67,8 @@
                     <!-----------------------------------------We are -->
                     <section class="pin-imgs-section">
                         <h2 class="text-center text-h2 mb-15 mt-5">We are</h2>
-                        <div class="md:grid md:grid-cols-3 md:gap-20 gap-10 md:px-40 flex flex-col justify-around items-center w-full h-[75vh]">                        
-                            <div class="flex flex-col gap-6 md:h-full justify-between items-center">
+                        <div class="lg:grid lg:grid-cols-3 lg:gap-20 gap-10 lg:px-40 px-10 flex flex-col justify-around items-center w-full h-[75vh]">                        
+                            <div class="flex flex-col gap-6 lg:h-full justify-between items-center">
                                 <div class="flex flex-col justify-center items-center">
                                     <h3 class="text-h3 mb-4" id="pin-title">Design</h3>
                                     <p class="text-paragraph text-center">
@@ -78,14 +78,14 @@
                                         You will love it!
                                     </p>
                                 </div>
-                                <div class="hidden md:block relative w-80 h-80 overflow-hidden justify-center items-center">
+                                <div class="hidden lg:block relative w-80 h-80 overflow-hidden justify-center items-center">
                                     <img class="absolute top-0 left-0 object-cover"  
                                         src="/pictures/test4.webp" 
                                         loading="lazy">
                                 </div>
                             </div>
 
-                            <div class="relative flex-col col-span-2 w-full h-full items-start shadow-md shadow-black/70 pin-imgs-container">
+                            <div class="relative flex-col lg:col-span-2 w-full h-full items-start shadow-md shadow-black/70 pin-imgs-container">
                                 <div class="relative flex w-full h-full object-cover pin-img" id="first-img">
                                     <img class="absolute top-0 left-0 w-full h-full object-cover"
                                     src="/pictures/test1.webp" 
@@ -107,7 +107,7 @@
 
                     <!-----------------------------------------gallery-->
                     <section class="relative flex w-full h-screen justify-end items-end my-10">
-                        <div class="absolute top-30 -left-30 md:top-72 md:left-80 -z-10 w-auto h-auto flex justify-center items-center">
+                        <div class="absolute top-30 left-1/2 transform -translate-x-1/2 lg:top-72 lg:left-80 lg:transform-none lg:translate-x-0 -z-10 w-auto h-auto flex justify-center items-center">
                             <canvas id="rotatingTextGallery" width="300" height="300"></canvas>
                         </div>
                         <div class="relative flex items-center overflow-hidden w-[1024px] h-80 mb-20">
