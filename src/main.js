@@ -10,31 +10,18 @@ window.addEventListener('DOMContentLoaded', () => {
   document.documentElement.style.visibility = 'visible';
   document.documentElement.style.opacity = '1';
 
-//     // Interception Observer for animations
-//   const animatedElements = document.querySelectorAll('[class*="animate-"]');
-
-//   const observer = new IntersectionObserver((entries) => {
-//     entries.forEach(entry => {
-//       if (entry.isIntersecting) {
-//         entry.target.classList.add('is-visible');
-//         observer.unobserve(entry.target); // Optional: only animate once
-//       }
-//     });
-//   }, { threshold: 0.1 });
-
-//   animatedElements.forEach(el => observer.observe(el));
-
-
-
+    // Initialize all functions after DOM is loaded
+    Rotation();
+    ParallaxEffect();
+    SmoothScroll();
+    PinningEffect();
+    ServiceCard();
+    ServicesScroll();
+    Gallery();
 });
 
 
-Rotation();
-ParallaxEffect();
-SmoothScroll();
-PinningEffect();
-ServicesScroll();
-ServiceCard();
+
 
 
 function Rotation() {
@@ -336,10 +323,203 @@ function ParallaxEffect() {
     });
 };
 
+function ServiceCard() {
+    const serviceCards = [
+        {
+            id: "rubber-base",
+            service: "Rubber Base",
+            src: "/pictures/serv-rubber-base.webp",
+            description: "A flexible, long-lasting base coat that strengthens your natural nails and helps prevent breakage. Perfect for added durability and a smooth, even surface before color application. Ideal for weak or brittle nails!",
+        },
+        {
+            id: "rubber-base+russian-manicure",
+            service: "Rubber Base + Russian Manicure",
+            src: "/pictures/serv-rubber-base+russian-manicure.jpg",
+            description: "",
+        },
+        {
+            id: "polygel-full-set",
+            service: "Polygel Full Set",
+            src: "/pictures/serv-polygel-full-set.jpg",
+            description: "A hybrid nail enhancement that combines the strength of acrylic with the flexibility of gel. Lightweight, odorless, and easy to shape, Polygel is perfect for natural-looking extensions or overlays with long-lasting durability and comfort.",
+        },
+        {
+            id: "polygel-fill-in",
+            service: "Polygel Fill In",
+            src: "/pictures/serv-polygel-fill-in.webp",
+            description: "falta foto",
+        },
+        {
+            id: "gel-x",
+            service: "Gel-X",
+            src: "/pictures/serv-gel-x.jpg",
+            description: "A full-cover, soft gel extension system that offers a lightweight, flexible, and natural-looking alternative to traditional enhancements. Quick to apply and gentle on natural nails, Gel-X provides flawless, long-lasting results with minimal filing or damage.",
+        },
+        {
+            id: "nail-art",
+            service: "Nail Art",
+            src: "/pictures/serv-nail-art.webp",
+            description: "",
+        },
+        {
+            id: "volcano-pedicure",
+            service: "Volcano Pedicure",
+            src: "/pictures/serv-volcano-pedicure.webp",
+            description: "",
+        },
+        {
+            id: "french-manicure",
+            service: "French Manicure",
+            src: "/pictures/serv-french-manicure.webp",
+            description: "A timeless and elegant style featuring a natural pink or nude base with crisp white tips. Perfect for a clean, classic look that suits any occasion.",
+        },
+        {
+            id: "russian-manicure",
+            service: "Russian Manicure",
+            src: "/pictures/serv-russian-manicure.jpg",
+            description: "A meticulous dry manicure technique that focuses on detailed cuticle work using an electric file. It results in a clean, polished appearance and longer-lasting nail enhancements, offering a refined and elegant finish.",
+        },
+        {
+            id: "acrylic-full-set",
+            service: "Acrylic Full Set",
+            src: "/pictures/serv-acrylic-full-set.webp",
+            description: "A durable and versatile nail enhancement created by combining liquid monomer and powder polymer. Ideal for adding length, strength, and shape to natural nails, with a flawless finish that lasts for weeks.",
+        },
+        {
+            id: "acrylic-fill-in",
+            service: "Acrylic Fill In",
+            src: "/pictures/serv-acrylic-fill-in.webp",
+            description: "",
+        },
+        {
+            id: "builder-gel-full-set",
+            service: "Builder Gel Full Set",
+            src: "/pictures/serv-builder-gel-full-set.jpg",
+            description: "A lightweight and durable gel ideal for strengthening natural nails or creating extensions. Perfect for clients with weak or brittle nails, it offers a more flexible and natural feel compared to acrylic, while still providing long-lasting structure and a flawless finish.",
+        },
+        {
+            id: "builder-gel-fill-in",
+            service: "Builder Gel Fill In",
+            src: "/pictures/serv-builder-gel-fill-in.jpg",
+            description: "",
+        },
+        {
+            id: "builder-gel+russian-manicure",
+            service: "Builder Gel + Russian Manicure",
+            src: "/pictures/serv-builder-gel+russian-manicure.jpg",
+            description: "",
+        },
+        {
+            id: "luxury-manicure",
+            service: "Luxury Manicure",
+            src: "/pictures/serv-luxury-manicure.webp",
+            description: "Experience the ultiate in nail care with a meticulous Russian manicure and long-lasting gel polish. This deluxe treatmentalso includes exfoliation, a relaxing hand massage, a collagen mask, and a paraffin wax treatment for flawless, elegant hands",
+        },
+        {
+            id: "basic-pedicure",
+            service: "Basic Pedicure",
+            src: "/pictures/serv-basic-pedicure.webp",
+            description: "",
+        },
+        {
+            id: "detox-pedicure",
+            service: "Detox Pedicure",
+            src: "/pictures/serv-detox-pedicure.jpg",
+            description: "",
+        },
+        {
+            id: "jelly-pedicure",
+            service: "Jelly Pedicure",
+            src: "/pictures/serv-jelly-pedicure.jpg",
+            description: "",
+        }
+    ];
+
+    const createCard = (column, index) => {
+        const card = document.createElement('div');
+        card.className = 'bg-secondary flex flex-col justify-center items-center w-full p-0.5 rounded-2xl object-cover transition-transform duration-300 hover:scale-105 cursor-pointer';
+        card.id = `${serviceCards[index].id}`;
+        column.appendChild(card);
+        const imgContainer = document.createElement('div');
+        imgContainer.className = 'w-full lg:h-52 h-32 object-cover';
+        card.appendChild(imgContainer);
+        const img = document.createElement('img');
+        img.className = 'w-full h-full rounded-2xl object-cover';
+        img.src = serviceCards[index].src;
+        img.alt = "Service image";
+        imgContainer.appendChild(img);
+        const span = document.createElement('span');
+        span.className = 'text-center text-paragraph-small my-2';
+        span.textContent = serviceCards[index].service;
+        card.appendChild(span);
+        card.addEventListener("click", () => {
+            createModal(serviceCards[index]);
+        });
+    };
+
+    const leftColumn = document.querySelector('.column-1');
+    if (!leftColumn) return;
+    for (let i = 0; i < 6; i++) {
+        createCard(leftColumn, i);
+    }
+
+    const middleColumn = document.querySelector('.column-2');
+    if (!middleColumn) return;
+    for (let i = 6; i < 12; i++) {
+        createCard(middleColumn, i);
+    }
+
+    const rightColumn = document.querySelector('.column-3');
+    if (!rightColumn) return;
+    for (let i = 12; i < 18; i++) {
+        createCard(rightColumn, i);
+    }
+
+    const createModal = (serviceCard) => {
+        // Overlay to close the modal
+        const overlay = document.createElement('div');
+        overlay.className = 'fixed inset-0 bg-black/30 z-20 backdrop-blur-6px -webkit-backdrop-blur-6px animate-expand-vertically';
+        
+        const modal = document.createElement('div');
+        modal.className = 'expanded-card';        
+        const modalDiv = document.createElement('div');
+        modalDiv.className = 'flex flex-col lg:w-full w-2/3 p-0.5 rounded-2xl bg-gradient-to-tr from-primary to-secondary';
+        modal.appendChild(modalDiv);
+        const imgContainer = document.createElement('div');
+        imgContainer.className = 'w-full h-96';
+        modalDiv.appendChild(imgContainer);
+        const img = document.createElement('img');
+        img.className = 'w-full h-full rounded-2xl object-cover';
+        img.src = serviceCard.src;
+        img.alt = "Service image";
+        imgContainer.appendChild(img);
+        const textContainer = document.createElement('div');
+        textContainer.className = 'flex flex-col justify-center items-center w-full h-1/2 gap-2 px-2';
+        const title = document.createElement('span');
+        title.className = 'text-center text-h3 my-2';
+        title.textContent = serviceCard.service;
+        textContainer.appendChild(title);
+        const description = document.createElement('p');
+        description.className = 'text-paragraph text-center my-2';
+        description.textContent = serviceCard.description;
+        textContainer.appendChild(description);
+        modalDiv.appendChild(textContainer);
+
+        overlay.appendChild(modal);
+        document.body.appendChild(overlay);
+
+        overlay.addEventListener('click', () => {
+            modal.remove();
+            overlay.remove();
+        });
+    };
+};
+
 function ServicesScroll() {
     const servicesSection = document.querySelector(".services-section");
-    const sideDivs = gsap.utils.toArray(".side-div");
-    const middleDiv = document.querySelector(".middle-div");
+    if (!servicesSection) return;
+    const sideDivs = gsap.utils.toArray(".column-1, .column-3");
+    const middleDiv = document.querySelector(".column-2");
     const sideDivsHeight = sideDivs[0].getBoundingClientRect().height;
     const scrollHeight = sideDivsHeight - window.innerHeight;
 
@@ -354,13 +534,12 @@ function ServicesScroll() {
     });
 
     // Animate side divs on scroll
-    if (!servicesSection) return;
-    gsap.utils.toArray('.side-div').forEach((sideDiv) => {
+    gsap.utils.toArray('.column-1, .column-3').forEach((sideDiv) => {
         gsap.to(sideDiv, {
             scrollTrigger: {
                 trigger: servicesSection,
                 start: "top top",
-                endTrigger: sideDivs[0],
+                endTrigger: sideDiv,
                 end: `bottom+=${scrollHeight} bottom`,
                 scrub: 1.5,
             },
@@ -372,7 +551,7 @@ function ServicesScroll() {
         scrollTrigger: {
             trigger: servicesSection,
             start: "top top",
-            endTrigger: sideDivs[0],
+            endTrigger: middleDiv,
             end: `bottom+=${scrollHeight} bottom`,
             scrub: 1.5,
         },
@@ -380,113 +559,79 @@ function ServicesScroll() {
     });
 };
 
-function ServiceCard() {
-    const expandedCardInfo = [
+function Gallery() {
+    const galleryImages = [
         {
-            id: "rubber-base",
-            service: "Rubber Base",
-            src: "/pictures/rubber-base.webp",
-            description: "A flexible, long-lasting base coat that strengthens your natural nails and helps prevent breakage. Perfect for added durability and a smooth, even surface before color application. Ideal for weak or brittle nails!",
+            id: "1",
+            src: "/pictures/gallery-1.webp",
+            alt: "Gallery Image 1",
         },
         {
-            id: "polygel",
-            service: "Polygel",
-            src: "/pictures/polygel.webp",
-            description: "A hybrid nail enhancement that combines the strength of acrylic with the flexibility of gel. Lightweight, odorless, and easy to shape, Polygel is perfect for natural-looking extensions or overlays with long-lasting durability and comfort.",
+            id: "2",
+            src: "/pictures/gallery-2.webp",
+            alt: "Gallery Image 2",
         },
         {
-            id: "gel-x",
-            service: "Gel-X",
-            src: "/pictures/gel-x.webp",
-            description: "A full-cover, soft gel extension system that offers a lightweight, flexible, and natural-looking alternative to traditional enhancements. Quick to apply and gentle on natural nails, Gel-X provides flawless, long-lasting results with minimal filing or damage.",
+            id: "3",
+            src: "/pictures/gallery-3.webp",
+            alt: "Gallery Image 3",
         },
         {
-            id: "simple-nail-art",
-            service: "Simple Nail Art",
-            src: "/pictures/simple-nail-art.webp",
-            description: "Elegant, minimal designs such as lines, dots, French tips, or subtle accents. A refined way to personalize your nails with a clean, stylish touch.",
+            id: "4",
+            src: "/pictures/gallery-4.webp",
+            alt: "Gallery Image 4",
         },
         {
-            id: "intermediate-nail-art",
-            service: "Intermediate Nail Art",
-            src: "/pictures/intermediate-nail-art.webp",
-            description: "Includes more detailed designs like florals, abstract patterns, or themed sets. A creative way to express your style with balanced detail and sophistication.",
+            id: "5",
+            src: "/pictures/gallery-5.webp",
+            alt: "Gallery Image 5",
         },
         {
-            id: "advanced-nail-art",
-            service: "Advanced Nail Art",
-            src: "/pictures/advanced-nail-art.webp",
-            description: "Intricate, hand-painted designs, 3D elements, character art, or layered patterns. Perfect for bold, statement looks and custom, artistic expression.",
+            id: "6",
+            src: "/pictures/gallery-6.webp",
+            alt: "Gallery Image 6",
         },
         {
-            id: "french-manicure",
-            service: "French Manicure",
-            src: "/pictures/french-manicure.webp",
-            description: "A timeless and elegant style featuring a natural pink or nude base with crisp white tips. Perfect for a clean, classic look that suits any occasion.",
+            id: "7",
+            src: "/pictures/gallery-7.webp",
+            alt: "Gallery Image 7",
         },
         {
-            id: "acrylic-nails",
-            service: "Acrylic Nails",
-            src: "/pictures/acrylic-nails.webp",
-            description: "A durable and versatile nail enhancement created by combining liquid monomer and powder polymer. Ideal for adding length, strength, and shape to natural nails, with a flawless finish that lasts for weeks.",
+            id: "8",
+            src: "/pictures/gallery-8.webp",
+            alt: "Gallery Image 8",
         },
         {
-            id: "builder-gel",
-            service: "Builder Gel",
-            src: "/pictures/builder-gel.webp",
-            description: "A lightweight and durable gel ideal for strengthening natural nails or creating extensions. Perfect for clients with weak or brittle nails, it offers a more flexible and natural feel compared to acrylic, while still providing long-lasting structure and a flawless finish.",
+            id: "9",
+            src: "/pictures/gallery-9.webp",
+            alt: "Gallery Image 9",
         },
         {
-            id: "russian-manicure",
-            service: "Russian Manicure",
-            src: "/pictures/russian-manicure.webp",
-            description: "A meticulous dry manicure technique that focuses on detailed cuticle work using an electric file. It results in a clean, polished appearance and longer-lasting nail enhancements, offering a refined and elegant finish.",
+            id: "10",
+            src: '/pictures/gallery-10.webp',
+            alt: "Gallery Image 10",
         },
-        {
-            id: "luxury-manicure",
-            service: "Luxury Manicure",
-            src: "/pictures/luxury-manicure.webp",
-            description: "Experience the ultiate in nail care with a meticulous Russian manicure and long-lasting gel polish. This deluxe treatmentalso includes exfoliation, a relaxing hand massage, a collagen mask, and a paraffin wax treatment for flawless, elegant hands",
-        }
     ];
+    const galleryLoopContainer = document.querySelector(".gallery-loop-1");
+    const galleryLoopContainer2 = document.querySelector(".gallery-loop-2");
+    
+    // Check if gallery containers exist before trying to append images
+    // In the services.html file, we get an error because the gallery containers don't exist
+    if (!galleryLoopContainer || !galleryLoopContainer2) {
+        return; 
+    }
+    
+    galleryImages.forEach(image => {
+        const img = document.createElement('img');
+        img.className = 'w-80 h-80 object-cover shrink-0';
+        img.src = image.src;    
+        img.alt = image.alt;
+        galleryLoopContainer.appendChild(img);
         
-
-
-    const serviceCards = document.querySelectorAll(".service-card");
-    serviceCards.forEach(card => {
-        card.addEventListener("click", () => {
-            const modal = document.getElementById('modal');
-            if (!modal.classList.contains('hidden')) return;
-            const modalImg = modal.querySelector('img');
-            const modalService = modal.querySelector('span');
-            const modalDescription = modal.querySelector('p');
-
-            const cardId = card.id;
-            const cardInfo = expandedCardInfo.find(info => info.id === cardId);
-            modalImg.src = cardInfo.src;
-            modalService.textContent = cardInfo.service;
-            modalDescription.textContent = cardInfo.description;
-
-            modal.classList.remove('hidden');
-            modal.classList.add('expanded-card');
-
-            // Overlay para cerrar
-            const overlay = document.createElement('div');
-            overlay.className = 'card-overlay';
-            overlay.classList.add('animate-expand-vertically');
-            overlay.addEventListener('click', () => {
-                modal.classList.add('hidden');
-                modal.classList.remove('expanded-card');
-                overlay.remove();
-            });
-            document.body.appendChild(overlay);
-            document.body.appendChild(modal);
-        });
+        const img2 = document.createElement('img');
+        img2.className = 'w-80 h-80 object-cover shrink-0';
+        img2.src = image.src;    
+        img2.alt = image.alt;
+        galleryLoopContainer2.appendChild(img2);
     });
-}
-
-
-
-
-
-
+};
