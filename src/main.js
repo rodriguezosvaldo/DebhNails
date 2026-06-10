@@ -329,109 +329,145 @@ function ServiceCard() {
             id: "rubber-base",
             service: "Rubber Base",
             src: "/pictures/serv-rubber-base.webp",
+            price: "$50",
+            duration: "1h",
             description: "A flexible, long-lasting base coat that strengthens your natural nails and helps prevent breakage. Perfect for added durability and a smooth, even surface before color application. Ideal for weak or brittle nails!",
         },
         {
             id: "rubber-base+russian-manicure",
             service: "Rubber Base + Russian Manicure",
             src: "/pictures/serv-rubber-base+russian-manicure.jpg",
-            description: "",
+            price: "$65",
+            duration: "1h 30min",
+            description: "The best of both worlds: a precise Russian dry manicure for impeccably clean cuticles, paired with a strengthening rubber base for a smooth, durable and long-lasting finish.",
         },
         {
             id: "polygel-full-set",
             service: "Polygel Full Set",
             src: "/pictures/serv-polygel-full-set.jpg",
+            price: "$65+",
+            duration: "1h 15min",
             description: "A hybrid nail enhancement that combines the strength of acrylic with the flexibility of gel. Lightweight, odorless, and easy to shape, Polygel is perfect for natural-looking extensions or overlays with long-lasting durability and comfort.",
         },
         {
             id: "polygel-fill-in",
             service: "Polygel Fill In",
             src: "/pictures/serv-polygel-fill-in.webp",
-            description: "falta foto",
+            price: "$55+",
+            duration: "1h",
+            description: "Refresh your Polygel enhancement by filling in the regrowth area. Keeps your nails strong, balanced and looking freshly done while maintaining their shape and durability.",
         },
         {
             id: "gel-x",
             service: "Gel-X",
             src: "/pictures/serv-gel-x.jpg",
+            price: "$70+",
+            duration: "1h 30min",
             description: "A full-cover, soft gel extension system that offers a lightweight, flexible, and natural-looking alternative to traditional enhancements. Quick to apply and gentle on natural nails, Gel-X provides flawless, long-lasting results with minimal filing or damage.",
         },
         {
             id: "nail-art",
             service: "Nail Art",
             src: "/pictures/serv-nail-art.webp",
-            description: "",
+            price: "Varies",
+            duration: "30min+",
+            description: "From minimalist accents to bold, fully custom designs: hand-painted art, chrome, 3D details and more, tailored to express your unique personality. Pricing varies with design complexity.",
         },
         {
             id: "volcano-pedicure",
             service: "Volcano Pedicure",
             src: "/pictures/serv-volcano-pedicure.webp",
-            description: "",
+            price: "$70",
+            duration: "1h",
+            description: "A spa-style pedicure with a fizzing volcano experience that softens, exfoliates and refreshes tired feet. Includes soak, scrub, massage and a flawless gel polish finish.",
         },
         {
             id: "french-manicure",
             service: "French Manicure",
             src: "/pictures/serv-french-manicure.webp",
+            price: "Add-on",
+            duration: "",
             description: "A timeless and elegant style featuring a natural pink or nude base with crisp white tips. Perfect for a clean, classic look that suits any occasion.",
         },
         {
             id: "russian-manicure",
             service: "Russian Manicure",
             src: "/pictures/serv-russian-manicure.jpg",
+            price: "$40",
+            duration: "30min",
             description: "A meticulous dry manicure technique that focuses on detailed cuticle work using an electric file. It results in a clean, polished appearance and longer-lasting nail enhancements, offering a refined and elegant finish.",
         },
         {
             id: "acrylic-full-set",
             service: "Acrylic Full Set",
             src: "/pictures/serv-acrylic-full-set.webp",
+            price: "$65+",
+            duration: "1h 15min",
             description: "A durable and versatile nail enhancement created by combining liquid monomer and powder polymer. Ideal for adding length, strength, and shape to natural nails, with a flawless finish that lasts for weeks.",
         },
         {
             id: "acrylic-fill-in",
             service: "Acrylic Fill In",
             src: "/pictures/serv-acrylic-fill-in.webp",
-            description: "",
+            price: "$55+",
+            duration: "1h",
+            description: "Maintain your acrylic set by filling in the natural regrowth. Restores strength, shape and a flawless surface so your nails stay durable and beautiful for weeks.",
         },
         {
             id: "builder-gel-full-set",
             service: "Builder Gel Full Set",
             src: "/pictures/serv-builder-gel-full-set.jpg",
+            price: "$65+",
+            duration: "1h 15min",
             description: "A lightweight and durable gel ideal for strengthening natural nails or creating extensions. Perfect for clients with weak or brittle nails, it offers a more flexible and natural feel compared to acrylic, while still providing long-lasting structure and a flawless finish.",
         },
         {
             id: "builder-gel-fill-in",
             service: "Builder Gel Fill In",
             src: "/pictures/serv-builder-gel-fill-in.jpg",
-            description: "",
+            price: "$55+",
+            duration: "1h",
+            description: "Keep your builder gel nails looking fresh by filling in the regrowth area. Reinforces structure and maintains a smooth, natural and long-lasting finish.",
         },
         {
             id: "builder-gel+russian-manicure",
             service: "Builder Gel + Russian Manicure",
             src: "/pictures/serv-builder-gel+russian-manicure.jpg",
-            description: "",
+            price: "$80+",
+            duration: "1h 45min",
+            description: "A full builder gel set combined with a detailed Russian manicure for ultra-clean cuticles, a strong yet flexible structure and an elegant, long-lasting result.",
         },
         {
             id: "luxury-manicure",
             service: "Luxury Manicure",
             src: "/pictures/serv-luxury-manicure.webp",
-            description: "Experience the ultiate in nail care with a meticulous Russian manicure and long-lasting gel polish. This deluxe treatmentalso includes exfoliation, a relaxing hand massage, a collagen mask, and a paraffin wax treatment for flawless, elegant hands",
+            price: "$70",
+            duration: "1h 15min",
+            description: "Experience the ultimate in nail care with a meticulous Russian manicure and long-lasting gel polish. This deluxe treatment also includes exfoliation, a relaxing hand massage, a collagen mask and a paraffin wax treatment for flawless, elegant hands.",
         },
         {
             id: "basic-pedicure",
             service: "Basic Pedicure",
             src: "/pictures/serv-basic-pedicure.webp",
-            description: "",
+            price: "$60",
+            duration: "1h",
+            description: "A complete pedicure with soak, nail shaping, cuticle care, exfoliation and a relaxing massage, finished with long-lasting gel polish for healthy, polished feet.",
         },
         {
             id: "detox-pedicure",
             service: "Detox Pedicure",
             src: "/pictures/serv-detox-pedicure.jpg",
-            description: "",
+            price: "$65",
+            duration: "1h",
+            description: "A purifying pedicure that detoxifies and revitalizes tired feet with cleansing minerals, exfoliation and a soothing massage, finished with a flawless polish.",
         },
         {
             id: "jelly-pedicure",
             service: "Jelly Pedicure",
             src: "/pictures/serv-jelly-pedicure.jpg",
-            description: "",
+            price: "$70",
+            duration: "1h",
+            description: "Sink your feet into a soothing jelly soak that hydrates and softens the skin. Includes exfoliation, massage and a beautiful finish for ultra-soft, refreshed feet.",
         }
     ];
 
@@ -446,12 +482,20 @@ function ServiceCard() {
         const img = document.createElement('img');
         img.className = 'w-full h-full rounded-2xl object-cover';
         img.src = serviceCards[index].src;
-        img.alt = "Service image";
+        img.alt = `${serviceCards[index].service} at Debh Nails, Louisville KY`;
+        img.loading = 'lazy';
+        img.decoding = 'async';
         imgContainer.appendChild(img);
         const span = document.createElement('span');
-        span.className = 'text-center text-paragraph-small my-2';
+        span.className = 'text-center text-paragraph-small mt-2';
         span.textContent = serviceCards[index].service;
         card.appendChild(span);
+        if (serviceCards[index].price) {
+            const price = document.createElement('span');
+            price.className = 'text-center text-paragraph-small font-semibold opacity-70 mb-2';
+            price.textContent = serviceCards[index].price;
+            card.appendChild(price);
+        }
         card.addEventListener("click", () => {
             createModal(serviceCards[index]);
         });
@@ -491,14 +535,22 @@ function ServiceCard() {
         const img = document.createElement('img');
         img.className = 'w-full h-full rounded-2xl object-cover';
         img.src = serviceCard.src;
-        img.alt = "Service image";
+        img.alt = `${serviceCard.service} at Debh Nails, Louisville KY`;
         imgContainer.appendChild(img);
         const textContainer = document.createElement('div');
         textContainer.className = 'flex flex-col justify-center items-center w-full h-1/2 gap-2 px-2';
         const title = document.createElement('span');
-        title.className = 'text-center text-h3 my-2';
+        title.className = 'text-center text-h3 mt-2';
         title.textContent = serviceCard.service;
         textContainer.appendChild(title);
+        if (serviceCard.price) {
+            const meta = document.createElement('span');
+            meta.className = 'text-center text-paragraph-small opacity-70';
+            meta.textContent = serviceCard.duration
+                ? `${serviceCard.price} · ${serviceCard.duration}`
+                : serviceCard.price;
+            textContainer.appendChild(meta);
+        }
         const description = document.createElement('p');
         description.className = 'text-paragraph text-center my-2';
         description.textContent = serviceCard.description;
@@ -621,17 +673,23 @@ function Gallery() {
         return; 
     }
     
-    galleryImages.forEach(image => {
+    galleryImages.forEach((image, i) => {
+        const alt = `Nail design by Debh Nails in Louisville, KY — gallery photo ${i + 1}`;
         const img = document.createElement('img');
         img.className = 'w-80 h-80 object-cover shrink-0';
         img.src = image.src;    
-        img.alt = image.alt;
+        img.alt = alt;
+        img.loading = 'lazy';
+        img.decoding = 'async';
         galleryLoopContainer.appendChild(img);
         
         const img2 = document.createElement('img');
         img2.className = 'w-80 h-80 object-cover shrink-0';
         img2.src = image.src;    
-        img2.alt = image.alt;
+        img2.alt = '';
+        img2.setAttribute('aria-hidden', 'true');
+        img2.loading = 'lazy';
+        img2.decoding = 'async';
         galleryLoopContainer2.appendChild(img2);
     });
 };

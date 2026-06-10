@@ -3,14 +3,50 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Services &amp; Prices | Debh Nails Louisville, KY</title>
+        <meta name="description" content="Explore Debh Nails services in Louisville, KY: Russian manicure, builder gel, acrylic, polygel, Gel-X, luxury manicure, nail art and spa pedicures. See prices and book online.">
+        <link rel="canonical" href="https://debhnails.com/services.html">
+        <meta name="robots" content="index, follow">
+        <meta name="author" content="Debh Nails">
+        <meta name="theme-color" content="#f7c6ce">
+        <meta name="keywords" content="nail salon services Louisville, nail prices, Russian manicure, builder gel, acrylic full set, Gel-X, polygel, pedicure, nail art">
+
+        <meta name="geo.region" content="US-KY">
+        <meta name="geo.placename" content="Louisville">
+
+        <!-- Open Graph -->
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="Debh Nails">
+        <meta property="og:title" content="Services &amp; Prices | Debh Nails Louisville, KY">
+        <meta property="og:description" content="Russian manicure, builder gel, acrylic, polygel, Gel-X, luxury manicure, nail art and spa pedicures in Louisville, KY.">
+        <meta property="og:url" content="https://debhnails.com/services.html">
+        <meta property="og:image" content="https://debhnails.com/og-image.jpg">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="en_US">
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Services &amp; Prices | Debh Nails Louisville, KY">
+        <meta name="twitter:description" content="Russian manicure, builder gel, acrylic, polygel, Gel-X, nail art and spa pedicures in Louisville, KY.">
+        <meta name="twitter:image" content="https://debhnails.com/og-image.jpg">
+
+        <!-- Icons -->
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+        <!-- Fonts (only the weights actually used) -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;700&family=Montserrat:wght@100;200;300;400;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+
         <script type="module" src="/src/main.js"></script>
-        <title>Services</title>
         <style>
             html { visibility: hidden; opacity: 0; }
         </style>
+        <noscript><style>html { visibility: visible !important; opacity: 1 !important; }</style></noscript>
     </head>
     <body class="flex flex-col text-text bg-primary justify-center items-center">
         <nav class="inline-flex fixed top-5 lg:right-5 z-10 justify-center items-center">
@@ -27,9 +63,10 @@
             <div class="smooth-content">
                 <header class="flex flex-col justify-center items-center w-full h-screen">
                     <img class="lg:w-60 lg:h-60 w-40 h-40 lg:mb-40 mb-20 animate-fade-in-up animate-delay-500 animate-duration-1000 parallax-img" 
-                    id="logo" src="logos/logo.webp" 
+                    id="logo" src="/logos/logo.webp" 
                     alt="Debh Nails logo"
-                    loading="lazy"
+                    fetchpriority="high"
+                    decoding="async"
                     data-parallax-y="500"
                     data-start-point="top center">
                     
@@ -52,8 +89,9 @@
                         <div class="flex flex-col-reverse lg:flex-row lg:items-end lg:space-x-10 lg:w-[700px] w-full lg:h-[350px] h-full self-center overflow-hidden">
                             <img class="lg:w-full lg:h-full w-1/2 h-1/2 object-cover shadow-md shadow-black/70" 
                             src="/pictures/services-1.webp" 
-                            alt="Colours"
-                            loading="lazy">
+                            alt="Vibrant nail polish colours at Debh Nails, Louisville KY"
+                            loading="lazy"
+                            decoding="async">
                             <span class="text-center text-h3">Colours</span>
                         </div>
                         <div class="flex flex-col items-end lg:space-y-5 lg:self-end lg:w-[550px] w-full lg:h-[380px] h-full overflow-hidden parallax-container" 
@@ -66,8 +104,9 @@
                             </span>
                             <img class="lg:w-full lg:h-full w-1/2 h-1/2 object-cover shadow-md shadow-black/70 parallax-img" 
                             src="/pictures/services-2.jpg" 
-                            alt="Design"
+                            alt="Creative nail design at Debh Nails, Louisville KY"
                             loading="lazy"
+                            decoding="async"
                             data-parallax-y="50"
                             data-start-point="top bottom">
                         </div>
@@ -76,8 +115,9 @@
                         data-start-point="top bottom">
                             <img class="lg:w-full lg:h-full w-3/4 h-3/4 object-cover shadow-md shadow-black/70 parallax-img" 
                             src="/pictures/services-3.jpg" 
-                            alt="Personality"
+                            alt="Nails that show your personality at Debh Nails, Louisville KY"
                             loading="lazy"
+                            decoding="async"
                             data-parallax-y="100"
                             data-start-point="top bottom">
                             <span class="text-center text-h3 parallax-container"
@@ -110,7 +150,9 @@
                             <div class="w-full bg-black h-5/6">
                                 <video class="w-full h-full object-cover" 
                                 src="/videos/V1.mp4" 
-                                autoplay muted loop>
+                                poster="/pictures/poster-v1.webp"
+                                autoplay muted loop playsinline preload="none"
+                                aria-label="Debh Nails manicure work in Louisville, KY">
                                 </video>
                             </div>
                             
@@ -119,7 +161,9 @@
                             <div class="w-full bg-black h-5/6">
                                 <video class="w-full h-full object-cover" 
                                 src="/videos/V2.mp4" 
-                                autoplay muted loop>
+                                poster="/pictures/poster-v2.webp"
+                                autoplay muted loop playsinline preload="none"
+                                aria-label="Debh Nails nail art process in Louisville, KY">
                                 </video>
                             </div>
                             
@@ -128,7 +172,9 @@
                             <div class="w-full bg-black h-5/6">
                                 <video class="w-full h-full object-cover" 
                                 src="/videos/V3.mp4" 
-                                autoplay muted loop>
+                                poster="/pictures/poster-v3.webp"
+                                autoplay muted loop playsinline preload="none"
+                                aria-label="Debh Nails finished nail design in Louisville, KY">
                                 </video>
                             </div>
                             
@@ -136,8 +182,8 @@
                     </section>
                     <!-- About Deboritah -->
                      <section class="flex flex-col justify-center items-center w-full h-screen lg:my-20 my-5 gap-15 lg:px-40 px-10">
-                        <div class="bg-red-500 flex justify-center items-center">
-                            <img class="object-cover" src="/pictures/deborah.jpg" alt="Deborah's picture">
+                        <div class="flex justify-center items-center max-w-md rounded-2xl overflow-hidden shadow-md shadow-black/40">
+                            <img class="w-full h-full object-cover" src="/pictures/deborah.jpg" alt="Deborah Rivero, nail artist and owner of Debh Nails in Louisville, KY" loading="lazy" decoding="async">
                         </div>
                         <p class="text-paragraph lg:w-3/4 w-full">In nail artistry, the quality of products used and the expertise and knowledge of the nail technician determine the excellence of the work. 
                             At my Louisville salon, I use only the finest products and have studied and continue to study at the best schools with maximum dedication, 
@@ -162,7 +208,7 @@
                             </li>
                             <li class="flex justify-center items-center gap-3 hover:scale-105 transition-all duration-200">
                                 <img class="md:w-7 md:h-7 w-5 h-5" src="/logos/phone.svg" alt="Phone logo">
-                                <a href="tel:+5029755722" class="flex justify-center items-center text-paragraph">502 975-5722</a>
+                                <a href="tel:+15029755722" class="flex justify-center items-center text-paragraph">502 975-5722</a>
                             </li>
                             <li class="flex justify-center items-center gap-3 hover:scale-105 transition-all duration-200">
                                 <img class="md:w-7 md:h-7 w-5 h-5" src="/logos/location.svg" alt="Location logo">
