@@ -1,6 +1,14 @@
 @import "tailwindcss";
 @plugin "@midudev/tailwind-animations";
 
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  overflow-x: hidden;
+}
+
 /*dark color 222220 */
 @theme {
   --color-primary: #f1e5e2;  /*tono de beige rosado muy claro o crema rosado*/

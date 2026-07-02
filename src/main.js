@@ -1,23 +1,28 @@
 import './style.css'
+import 'lenis/dist/lenis.css'
 
+import Lenis from 'lenis'
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollSmoother } from "gsap/ScrollSmoother";
-gsap.registerPlugin(ScrollTrigger,ScrollSmoother);
+gsap.registerPlugin(ScrollTrigger);
+
+let lenis;
 
  
 window.addEventListener('DOMContentLoaded', () => {
   document.documentElement.style.visibility = 'visible';
   document.documentElement.style.opacity = '1';
 
-    // Initialize all functions after DOM is loaded
+    SmoothScroll();
     Rotation();
     ParallaxEffect();
-    SmoothScroll();
     PinningEffect();
     ServiceCard();
     ServicesScroll();
     Gallery();
+    ScrollTrigger.refresh();
+
+    window.addEventListener('load', () => ScrollTrigger.refresh());
 });
 
 
@@ -154,17 +159,19 @@ function Rotation() {
 };
 
 function SmoothScroll() {
-    document.querySelectorAll('.smooth-wrapper').forEach(wrapper => {
-    const content = wrapper.querySelector('.smooth-content');
-    ScrollSmoother.create({
-      wrapper: wrapper,
-      content: content,
-      smooth: 1.5,
-      effects: true,
-      normalizeScroll: true,
-      smoothTouch: 0.1
+    lenis = new Lenis({
+        lerp: 0.08,
+        smoothWheel: true,
+        wheelMultiplier: 0.9,
+        touchMultiplier: 1.5,
     });
-  });
+
+    lenis.on('scroll', ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0);
 };
 
 function PinningEffect() {
@@ -173,34 +180,26 @@ function PinningEffect() {
     const pinImgsContainer = document.querySelector(".pin-imgs-container");
     const pinImgs = gsap.utils.toArray(".pin-img");
 
-    // h3 title animation
     const pinTitle = document.getElementById("pin-title");
     const pinTitles = ["Design", "Style", "Personality"];
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const imgIndex = pinImgs.indexOf(entry.target);
-                if (pinTitle && pinTitles[imgIndex]) {
-                    pinTitle.textContent = pinTitles[imgIndex];
-                    pinTitle.classList.remove("animate-blurred-fade-in", "animate-duration-1000");
-                    void pinTitle.offsetWidth;
-                    pinTitle.classList.add("animate-blurred-fade-in", "animate-duration-1000");
-                }
-            }
-            if (!entry.isIntersecting) {
-                const imgIndex = pinImgs.indexOf(entry.target);
-                if (pinTitle && pinTitles[imgIndex]) {
-                    if (imgIndex === 0) return;
-                    pinTitle.textContent = pinTitles[imgIndex - 1];
-                    pinTitle.classList.remove("animate-blurred-fade-in", "animate-duration-1000");
-                    void pinTitle.offsetWidth;
-                    pinTitle.classList.add("animate-blurred-fade-in", "animate-duration-1000");
-                }
-            }
-        });
-    }, { threshold: 0.1 });
 
-    pinImgs.forEach(img => observer.observe(img));
+    const setPinTitle = (index) => {
+        if (!pinTitle || !pinTitles[index] || pinTitle.textContent === pinTitles[index]) return;
+        pinTitle.textContent = pinTitles[index];
+        pinTitle.classList.remove("animate-blurred-fade-in", "animate-duration-1000");
+        void pinTitle.offsetWidth;
+        pinTitle.classList.add("animate-blurred-fade-in", "animate-duration-1000");
+    };
+
+    pinImgs.forEach((img, index) => {
+        ScrollTrigger.create({
+            trigger: img,
+            start: "top 55%",
+            end: "bottom 45%",
+            onEnter: () => setPinTitle(index),
+            onEnterBack: () => setPinTitle(index),
+        });
+    });
     
 
 
@@ -275,7 +274,7 @@ function ParallaxEffect() {
                     toggleActions: 'play none reverse none',
                     start: startPoint,
                     end: 'bottom top',
-                    scrub: 0.2,
+                    scrub: 1,
                 },
                 y: -yTransition,
                 x: xTransition,
@@ -296,7 +295,7 @@ function ParallaxEffect() {
                     toggleActions: 'play none reverse none',
                     start: startPoint,
                     end: 'bottom top',
-                    scrub: 0.2,
+                    scrub: 1,
                 },
                 y: -yTransition,
                 x: xTransition,
@@ -487,15 +486,9 @@ function ServiceCard() {
         img.decoding = 'async';
         imgContainer.appendChild(img);
         const span = document.createElement('span');
-        span.className = 'text-center text-paragraph-small mt-2';
+        span.className = 'text-center text-paragraph-small mt-2 mb-2';
         span.textContent = serviceCards[index].service;
         card.appendChild(span);
-        if (serviceCards[index].price) {
-            const price = document.createElement('span');
-            price.className = 'text-center text-paragraph-small font-semibold opacity-70 mb-2';
-            price.textContent = serviceCards[index].price;
-            card.appendChild(price);
-        }
         card.addEventListener("click", () => {
             createModal(serviceCards[index]);
         });
@@ -523,6 +516,7 @@ function ServiceCard() {
         // Overlay to close the modal
         const overlay = document.createElement('div');
         overlay.className = 'fixed inset-0 bg-black/30 z-20 backdrop-blur-6px -webkit-backdrop-blur-6px animate-expand-vertically';
+        overlay.setAttribute('data-lenis-prevent', '');
         
         const modal = document.createElement('div');
         modal.className = 'expanded-card';        
@@ -559,10 +553,12 @@ function ServiceCard() {
 
         overlay.appendChild(modal);
         document.body.appendChild(overlay);
+        lenis?.stop();
 
         overlay.addEventListener('click', () => {
             modal.remove();
             overlay.remove();
+            lenis?.start();
         });
     };
 };
