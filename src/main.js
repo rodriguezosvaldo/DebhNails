@@ -175,13 +175,12 @@ function SmoothScroll() {
 };
 
 function PinningEffect() {
-    // Pinning section and images
     const pinSection = document.querySelector(".pin-imgs-section");
     const pinImgsContainer = document.querySelector(".pin-imgs-container");
     const pinImgs = gsap.utils.toArray(".pin-img");
-
     const pinTitle = document.getElementById("pin-title");
     const pinTitles = ["Design", "Style", "Personality"];
+    let pinTriggers = [];
 
     const setPinTitle = (index) => {
         if (!pinTitle || !pinTitles[index] || pinTitle.textContent === pinTitles[index]) return;
@@ -191,59 +190,91 @@ function PinningEffect() {
         pinTitle.classList.add("animate-blurred-fade-in", "animate-duration-1000");
     };
 
-    pinImgs.forEach((img, index) => {
-        ScrollTrigger.create({
-            trigger: img,
-            start: "top 55%",
-            end: "bottom 45%",
-            onEnter: () => setPinTitle(index),
-            onEnterBack: () => setPinTitle(index),
-        });
-    });
-    
+    const killPinning = () => {
+        pinTriggers.forEach((st) => st.kill());
+        pinTriggers = [];
+        if (pinImgsContainer) {
+            pinImgsContainer.style.overflow = "";
+        }
+        gsap.set(pinImgs, { clearProps: "y,position,top,left,width,height,transform,zIndex" });
+    };
 
+    const initPinning = () => {
+        if (!pinSection || !pinImgsContainer || !pinImgs.length) return;
 
-    if (pinSection && pinImgsContainer && pinImgs.length) {
-        // Calculate the total height needed for the scroll
         const containerHeight = pinImgsContainer.getBoundingClientRect().height;
-        const totalHeight = containerHeight * (pinImgs.length); 
+        if (!containerHeight) return;
 
-        // Make sure the parent container has overflow hidden
+        const scrollDistance = containerHeight * (pinImgs.length - 1);
+
         pinImgsContainer.style.overflow = "hidden";
-        
-        // Fix the section during the scroll
-        ScrollTrigger.create({
-            trigger: pinSection,
-            start: "top top",
-            end: `bottom+=${totalHeight} bottom`, // Adjust to make it last until the last image is completely visible
-            pin: true,
-            pinSpacing: true,
+
+        gsap.set(pinImgs, {
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
         });
 
-        // Animate each image to stack
-        pinImgs.forEach((img, index) => {
-            if (index === 0) return;
-            gsap.fromTo(img, 
-                {
-                    y: containerHeight * index,
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    width: "100%",
-                    height: "100%"
-                },
-                {
-                    y: 0,
-                    scrollTrigger: {
-                        trigger: pinImgsContainer,
-                        start: `top+=${containerHeight * index} bottom-=400px`,
-                        end: `top+=${containerHeight * (index + 1)} bottom-=400px`,
-                        scrub: 1,
-                    }
-                }
+        gsap.set(pinImgs[0], { y: 0, zIndex: 1 });
+
+        pinTriggers.push(
+            ScrollTrigger.create({
+                trigger: pinSection,
+                start: "top top",
+                end: `+=${scrollDistance}`,
+                pin: true,
+                pinSpacing: true,
+                anticipatePin: 1,
+            })
+        );
+
+        pinImgs.forEach((_, index) => {
+            pinTriggers.push(
+                ScrollTrigger.create({
+                    trigger: pinSection,
+                    start: `top+=${containerHeight * index} top`,
+                    end: `top+=${containerHeight * (index + 1)} top`,
+                    onEnter: () => setPinTitle(index),
+                    onEnterBack: () => setPinTitle(index),
+                })
             );
         });
+
+        pinImgs.forEach((img, index) => {
+            if (index === 0) return;
+
+            gsap.set(img, { y: containerHeight * index, zIndex: index + 1 });
+
+            const tween = gsap.to(img, {
+                y: 0,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: pinSection,
+                    start: `top+=${containerHeight * (index - 1)} top`,
+                    end: `top+=${containerHeight * index} top`,
+                    scrub: 1,
+                },
+            });
+
+            if (tween.scrollTrigger) {
+                pinTriggers.push(tween.scrollTrigger);
+            }
+        });
     };
+
+    killPinning();
+    initPinning();
+
+    const refreshPinning = () => {
+        killPinning();
+        initPinning();
+        ScrollTrigger.refresh();
+    };
+
+    window.addEventListener("resize", refreshPinning);
+    window.addEventListener("load", refreshPinning);
 };
 
 function ParallaxEffect() {
@@ -669,10 +700,14 @@ function Gallery() {
         return; 
     }
     
+    const syncGalleryLoopOffset = () => {
+        galleryLoopContainer2.style.left = `${galleryLoopContainer.scrollWidth}px`;
+    };
+
     galleryImages.forEach((image, i) => {
         const alt = `Nail design by Debh Nails in Louisville, KY — gallery photo ${i + 1}`;
         const img = document.createElement('img');
-        img.className = 'w-80 h-80 object-cover shrink-0';
+        img.className = 'gallery-loop-img w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 object-cover shrink-0';
         img.src = image.src;    
         img.alt = alt;
         img.loading = 'lazy';
@@ -680,7 +715,7 @@ function Gallery() {
         galleryLoopContainer.appendChild(img);
         
         const img2 = document.createElement('img');
-        img2.className = 'w-80 h-80 object-cover shrink-0';
+        img2.className = 'gallery-loop-img w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 object-cover shrink-0';
         img2.src = image.src;    
         img2.alt = '';
         img2.setAttribute('aria-hidden', 'true');
@@ -688,4 +723,7 @@ function Gallery() {
         img2.decoding = 'async';
         galleryLoopContainer2.appendChild(img2);
     });
+
+    syncGalleryLoopOffset();
+    window.addEventListener('resize', syncGalleryLoopOffset);
 };
