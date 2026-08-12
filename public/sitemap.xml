@@ -1,13 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://debhnails.com/</loc>
+    <lastmod>2026-08-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://debhnails.com/pictures/home-1.jpg</image:loc>
+      <image:title>Custom nail art by Debh Nails in Louisville, KY</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://debhnails.com/pictures/home-2.jpg</image:loc>
+      <image:title>Elegant manicure design by Debh Nails, Louisville KY</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://debhnails.com/pictures/home-3.jpg</image:loc>
+      <image:title>Trendy nail design by Debh Nails, Louisville KY</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://debhnails.com/pictures/we-are-0.webp</image:loc>
+      <image:title>Detailed nail design at Debh Nails studio</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://debhnails.com/services.html</loc>
+    <lastmod>2026-08-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://debhnails.com/pictures/services-1.webp</image:loc>
+      <image:title>Vibrant nail polish colours at Debh Nails, Louisville KY</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://debhnails.com/pictures/serv-russian-manicure.jpg</image:loc>
+      <image:title>Russian Manicure at Debh Nails, Louisville KY</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://debhnails.com/pictures/serv-luxury-manicure.webp</image:loc>
+      <image:title>Luxury Manicure at Debh Nails, Louisville KY</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://debhnails.com/pictures/serv-nail-art.webp</image:loc>
+      <image:title>Nail Art at Debh Nails, Louisville KY</image:title>
+    </image:image>
   </url>
 </urlset>

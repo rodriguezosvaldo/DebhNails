@@ -205,7 +205,12 @@ function PinningEffect() {
         const containerHeight = pinImgsContainer.getBoundingClientRect().height;
         if (!containerHeight) return;
 
-        const scrollDistance = containerHeight * (pinImgs.length - 1);
+        // One segment per image transition, PLUS one extra "hold" segment at
+        // the end so the last image stays fully visible (and its title has
+        // room to display) before the section unpins. Without the extra
+        // segment, the last title's window collapses to zero and the pin
+        // releases the instant the last image finishes sliding in.
+        const scrollDistance = containerHeight * pinImgs.length;
 
         pinImgsContainer.style.overflow = "hidden";
 
@@ -219,23 +224,29 @@ function PinningEffect() {
 
         gsap.set(pinImgs[0], { y: 0, zIndex: 1 });
 
-        pinTriggers.push(
-            ScrollTrigger.create({
-                trigger: pinSection,
-                start: "top top",
-                end: `+=${scrollDistance}`,
-                pin: true,
-                pinSpacing: true,
-                anticipatePin: 1,
-            })
-        );
+        const pinST = ScrollTrigger.create({
+            trigger: pinSection,
+            start: "top top",
+            end: `+=${scrollDistance}`,
+            pin: true,
+            pinSpacing: true,
+            anticipatePin: 1,
+        });
+        pinTriggers.push(pinST);
+
+        // Nested triggers below are pinned to the SAME element as pinST, so
+        // relative start strings like "top+=X top" get re-resolved against
+        // the pinned/spaced layout and drift after the first one (GSAP quirk
+        // with multiple triggers sharing a pinned trigger element). Anchoring
+        // everything to pinST's own resolved numeric start avoids that.
+        const pinStart = pinST.start;
 
         pinImgs.forEach((_, index) => {
             pinTriggers.push(
                 ScrollTrigger.create({
                     trigger: pinSection,
-                    start: `top+=${containerHeight * index} top`,
-                    end: `top+=${containerHeight * (index + 1)} top`,
+                    start: pinStart + containerHeight * index,
+                    end: pinStart + containerHeight * (index + 1),
                     onEnter: () => setPinTitle(index),
                     onEnterBack: () => setPinTitle(index),
                 })
@@ -252,8 +263,8 @@ function PinningEffect() {
                 ease: "none",
                 scrollTrigger: {
                     trigger: pinSection,
-                    start: `top+=${containerHeight * (index - 1)} top`,
-                    end: `top+=${containerHeight * index} top`,
+                    start: pinStart + containerHeight * (index - 1),
+                    end: pinStart + containerHeight * index,
                     scrub: 1,
                 },
             });
@@ -359,6 +370,7 @@ function ServiceCard() {
             id: "rubber-base",
             service: "Rubber Base",
             src: "/pictures/serv-rubber-base.webp",
+            w: 700, h: 933,
             price: "$50",
             duration: "1h",
             description: "A flexible, long-lasting base coat that strengthens your natural nails and helps prevent breakage. Perfect for added durability and a smooth, even surface before color application. Ideal for weak or brittle nails!",
@@ -367,6 +379,7 @@ function ServiceCard() {
             id: "rubber-base+russian-manicure",
             service: "Rubber Base + Russian Manicure",
             src: "/pictures/serv-rubber-base+russian-manicure.jpg",
+            w: 480, h: 640,
             price: "$65",
             duration: "1h 30min",
             description: "The best of both worlds: a precise Russian dry manicure for impeccably clean cuticles, paired with a strengthening rubber base for a smooth, durable and long-lasting finish.",
@@ -375,6 +388,7 @@ function ServiceCard() {
             id: "polygel-full-set",
             service: "Polygel Full Set",
             src: "/pictures/serv-polygel-full-set.jpg",
+            w: 480, h: 568,
             price: "$65+",
             duration: "1h 15min",
             description: "A hybrid nail enhancement that combines the strength of acrylic with the flexibility of gel. Lightweight, odorless, and easy to shape, Polygel is perfect for natural-looking extensions or overlays with long-lasting durability and comfort.",
@@ -383,6 +397,7 @@ function ServiceCard() {
             id: "polygel-fill-in",
             service: "Polygel Fill In",
             src: "/pictures/serv-polygel-fill-in.webp",
+            w: 700, h: 933,
             price: "$55+",
             duration: "1h",
             description: "Refresh your Polygel enhancement by filling in the regrowth area. Keeps your nails strong, balanced and looking freshly done while maintaining their shape and durability.",
@@ -391,6 +406,7 @@ function ServiceCard() {
             id: "gel-x",
             service: "Gel-X",
             src: "/pictures/serv-gel-x.jpg",
+            w: 480, h: 596,
             price: "$70+",
             duration: "1h 30min",
             description: "A full-cover, soft gel extension system that offers a lightweight, flexible, and natural-looking alternative to traditional enhancements. Quick to apply and gentle on natural nails, Gel-X provides flawless, long-lasting results with minimal filing or damage.",
@@ -399,6 +415,7 @@ function ServiceCard() {
             id: "nail-art",
             service: "Nail Art",
             src: "/pictures/serv-nail-art.webp",
+            w: 700, h: 933,
             price: "Varies",
             duration: "30min+",
             description: "From minimalist accents to bold, fully custom designs: hand-painted art, chrome, 3D details and more, tailored to express your unique personality. Pricing varies with design complexity.",
@@ -407,6 +424,7 @@ function ServiceCard() {
             id: "volcano-pedicure",
             service: "Volcano Pedicure",
             src: "/pictures/serv-volcano-pedicure.webp",
+            w: 700, h: 1092,
             price: "$70",
             duration: "1h",
             description: "A spa-style pedicure with a fizzing volcano experience that softens, exfoliates and refreshes tired feet. Includes soak, scrub, massage and a flawless gel polish finish.",
@@ -415,6 +433,7 @@ function ServiceCard() {
             id: "french-manicure",
             service: "French Manicure",
             src: "/pictures/serv-french-manicure.webp",
+            w: 700, h: 881,
             price: "Add-on",
             duration: "",
             description: "A timeless and elegant style featuring a natural pink or nude base with crisp white tips. Perfect for a clean, classic look that suits any occasion.",
@@ -423,6 +442,7 @@ function ServiceCard() {
             id: "russian-manicure",
             service: "Russian Manicure",
             src: "/pictures/serv-russian-manicure.jpg",
+            w: 480, h: 640,
             price: "$40",
             duration: "30min",
             description: "A meticulous dry manicure technique that focuses on detailed cuticle work using an electric file. It results in a clean, polished appearance and longer-lasting nail enhancements, offering a refined and elegant finish.",
@@ -431,6 +451,7 @@ function ServiceCard() {
             id: "acrylic-full-set",
             service: "Acrylic Full Set",
             src: "/pictures/serv-acrylic-full-set.webp",
+            w: 480, h: 535,
             price: "$65+",
             duration: "1h 15min",
             description: "A durable and versatile nail enhancement created by combining liquid monomer and powder polymer. Ideal for adding length, strength, and shape to natural nails, with a flawless finish that lasts for weeks.",
@@ -439,6 +460,7 @@ function ServiceCard() {
             id: "acrylic-fill-in",
             service: "Acrylic Fill In",
             src: "/pictures/serv-acrylic-fill-in.webp",
+            w: 480, h: 568,
             price: "$55+",
             duration: "1h",
             description: "Maintain your acrylic set by filling in the natural regrowth. Restores strength, shape and a flawless surface so your nails stay durable and beautiful for weeks.",
@@ -447,6 +469,7 @@ function ServiceCard() {
             id: "builder-gel-full-set",
             service: "Builder Gel Full Set",
             src: "/pictures/serv-builder-gel-full-set.jpg",
+            w: 480, h: 535,
             price: "$65+",
             duration: "1h 15min",
             description: "A lightweight and durable gel ideal for strengthening natural nails or creating extensions. Perfect for clients with weak or brittle nails, it offers a more flexible and natural feel compared to acrylic, while still providing long-lasting structure and a flawless finish.",
@@ -455,6 +478,7 @@ function ServiceCard() {
             id: "builder-gel-fill-in",
             service: "Builder Gel Fill In",
             src: "/pictures/serv-builder-gel-fill-in.jpg",
+            w: 480, h: 535,
             price: "$55+",
             duration: "1h",
             description: "Keep your builder gel nails looking fresh by filling in the regrowth area. Reinforces structure and maintains a smooth, natural and long-lasting finish.",
@@ -463,6 +487,7 @@ function ServiceCard() {
             id: "builder-gel+russian-manicure",
             service: "Builder Gel + Russian Manicure",
             src: "/pictures/serv-builder-gel+russian-manicure.jpg",
+            w: 480, h: 640,
             price: "$80+",
             duration: "1h 45min",
             description: "A full builder gel set combined with a detailed Russian manicure for ultra-clean cuticles, a strong yet flexible structure and an elegant, long-lasting result.",
@@ -471,6 +496,7 @@ function ServiceCard() {
             id: "luxury-manicure",
             service: "Luxury Manicure",
             src: "/pictures/serv-luxury-manicure.webp",
+            w: 700, h: 948,
             price: "$70",
             duration: "1h 15min",
             description: "Experience the ultimate in nail care with a meticulous Russian manicure and long-lasting gel polish. This deluxe treatment also includes exfoliation, a relaxing hand massage, a collagen mask and a paraffin wax treatment for flawless, elegant hands.",
@@ -479,6 +505,7 @@ function ServiceCard() {
             id: "basic-pedicure",
             service: "Basic Pedicure",
             src: "/pictures/serv-basic-pedicure.webp",
+            w: 700, h: 1092,
             price: "$60",
             duration: "1h",
             description: "A complete pedicure with soak, nail shaping, cuticle care, exfoliation and a relaxing massage, finished with long-lasting gel polish for healthy, polished feet.",
@@ -487,6 +514,7 @@ function ServiceCard() {
             id: "detox-pedicure",
             service: "Detox Pedicure",
             src: "/pictures/serv-detox-pedicure.jpg",
+            w: 700, h: 1092,
             price: "$65",
             duration: "1h",
             description: "A purifying pedicure that detoxifies and revitalizes tired feet with cleansing minerals, exfoliation and a soothing massage, finished with a flawless polish.",
@@ -495,6 +523,7 @@ function ServiceCard() {
             id: "jelly-pedicure",
             service: "Jelly Pedicure",
             src: "/pictures/serv-jelly-pedicure.jpg",
+            w: 700, h: 1092,
             price: "$70",
             duration: "1h",
             description: "Sink your feet into a soothing jelly soak that hydrates and softens the skin. Includes exfoliation, massage and a beautiful finish for ultra-soft, refreshed feet.",
@@ -515,11 +544,13 @@ function ServiceCard() {
         img.alt = `${serviceCards[index].service} at Debh Nails, Louisville KY`;
         img.loading = 'lazy';
         img.decoding = 'async';
+        img.width = serviceCards[index].w;
+        img.height = serviceCards[index].h;
         imgContainer.appendChild(img);
-        const span = document.createElement('span');
-        span.className = 'text-center text-paragraph-small mt-2 mb-2';
-        span.textContent = serviceCards[index].service;
-        card.appendChild(span);
+        const heading = document.createElement('h3');
+        heading.className = 'text-center text-paragraph-small mt-2 mb-2';
+        heading.textContent = serviceCards[index].service;
+        card.appendChild(heading);
         card.addEventListener("click", () => {
             createModal(serviceCards[index]);
         });
@@ -561,10 +592,12 @@ function ServiceCard() {
         img.className = 'w-full h-full rounded-2xl object-cover';
         img.src = serviceCard.src;
         img.alt = `${serviceCard.service} at Debh Nails, Louisville KY`;
+        img.width = serviceCard.w;
+        img.height = serviceCard.h;
         imgContainer.appendChild(img);
         const textContainer = document.createElement('div');
         textContainer.className = 'flex flex-col justify-center items-center w-full h-1/2 gap-2 px-2';
-        const title = document.createElement('span');
+        const title = document.createElement('h3');
         title.className = 'text-center text-h3 mt-2';
         title.textContent = serviceCard.service;
         textContainer.appendChild(title);
@@ -640,56 +673,16 @@ function ServicesScroll() {
 
 function Gallery() {
     const galleryImages = [
-        {
-            id: "1",
-            src: "/pictures/gallery-1.webp",
-            alt: "Gallery Image 1",
-        },
-        {
-            id: "2",
-            src: "/pictures/gallery-2.webp",
-            alt: "Gallery Image 2",
-        },
-        {
-            id: "3",
-            src: "/pictures/gallery-3.webp",
-            alt: "Gallery Image 3",
-        },
-        {
-            id: "4",
-            src: "/pictures/gallery-4.webp",
-            alt: "Gallery Image 4",
-        },
-        {
-            id: "5",
-            src: "/pictures/gallery-5.webp",
-            alt: "Gallery Image 5",
-        },
-        {
-            id: "6",
-            src: "/pictures/gallery-6.webp",
-            alt: "Gallery Image 6",
-        },
-        {
-            id: "7",
-            src: "/pictures/gallery-7.webp",
-            alt: "Gallery Image 7",
-        },
-        {
-            id: "8",
-            src: "/pictures/gallery-8.webp",
-            alt: "Gallery Image 8",
-        },
-        {
-            id: "9",
-            src: "/pictures/gallery-9.webp",
-            alt: "Gallery Image 9",
-        },
-        {
-            id: "10",
-            src: '/pictures/gallery-10.webp',
-            alt: "Gallery Image 10",
-        },
+        { id: "1", src: "/pictures/gallery-1.webp", w: 700, h: 933 },
+        { id: "2", src: "/pictures/gallery-2.webp", w: 700, h: 933 },
+        { id: "3", src: "/pictures/gallery-3.webp", w: 700, h: 933 },
+        { id: "4", src: "/pictures/gallery-4.webp", w: 700, h: 834 },
+        { id: "5", src: "/pictures/gallery-5.webp", w: 700, h: 933 },
+        { id: "6", src: "/pictures/gallery-6.webp", w: 700, h: 1244 },
+        { id: "7", src: "/pictures/gallery-7.webp", w: 700, h: 933 },
+        { id: "8", src: "/pictures/gallery-8.webp", w: 700, h: 933 },
+        { id: "9", src: "/pictures/gallery-9.webp", w: 700, h: 834 },
+        { id: "10", src: '/pictures/gallery-10.webp', w: 700, h: 933 },
     ];
     const galleryLoopContainer = document.querySelector(".gallery-loop-1");
     const galleryLoopContainer2 = document.querySelector(".gallery-loop-2");
@@ -708,19 +701,23 @@ function Gallery() {
         const alt = `Nail design by Debh Nails in Louisville, KY — gallery photo ${i + 1}`;
         const img = document.createElement('img');
         img.className = 'gallery-loop-img w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 object-cover shrink-0';
-        img.src = image.src;    
+        img.src = image.src;
         img.alt = alt;
         img.loading = 'lazy';
         img.decoding = 'async';
+        img.width = image.w;
+        img.height = image.h;
         galleryLoopContainer.appendChild(img);
-        
+
         const img2 = document.createElement('img');
         img2.className = 'gallery-loop-img w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 object-cover shrink-0';
-        img2.src = image.src;    
+        img2.src = image.src;
         img2.alt = '';
         img2.setAttribute('aria-hidden', 'true');
         img2.loading = 'lazy';
         img2.decoding = 'async';
+        img2.width = image.w;
+        img2.height = image.h;
         galleryLoopContainer2.appendChild(img2);
     });
 

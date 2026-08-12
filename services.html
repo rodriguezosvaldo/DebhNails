@@ -47,6 +47,52 @@
             html { visibility: hidden; opacity: 0; }
         </style>
         <noscript><style>html { visibility: visible !important; opacity: 1 !important; }</style></noscript>
+
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "NailSalon",
+          "@id": "https://debhnails.com/#business",
+          "name": "Debh Nails",
+          "url": "https://debhnails.com/services.html",
+          "image": "https://debhnails.com/og-image.jpg",
+          "telephone": "+1-502-975-5722",
+          "priceRange": "$$",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "5000 Shelbyville Rd, Suite 28",
+            "addressLocality": "Louisville",
+            "addressRegion": "KY",
+            "postalCode": "40207",
+            "addressCountry": "US"
+          },
+          "areaServed": "Louisville, KY",
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Debh Nails Services",
+            "itemListElement": [
+              { "@type": "Offer", "priceCurrency": "USD", "price": "50", "itemOffered": { "@type": "Service", "name": "Rubber Base", "description": "Flexible, long-lasting base coat that strengthens natural nails and helps prevent breakage." } },
+              { "@type": "Offer", "priceCurrency": "USD", "price": "65", "itemOffered": { "@type": "Service", "name": "Rubber Base + Russian Manicure", "description": "Russian dry manicure paired with a strengthening rubber base for a smooth, durable finish." } },
+              { "@type": "Offer", "priceCurrency": "USD", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "65", "priceCurrency": "USD" }, "itemOffered": { "@type": "Service", "name": "Polygel Full Set", "description": "Hybrid nail enhancement combining acrylic strength with gel flexibility for natural-looking extensions." } },
+              { "@type": "Offer", "priceCurrency": "USD", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "55", "priceCurrency": "USD" }, "itemOffered": { "@type": "Service", "name": "Polygel Fill In", "description": "Refresh a Polygel enhancement by filling in the regrowth area." } },
+              { "@type": "Offer", "priceCurrency": "USD", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "70", "priceCurrency": "USD" }, "itemOffered": { "@type": "Service", "name": "Gel-X", "description": "Full-cover, soft gel extension system offering lightweight, natural-looking results." } },
+              { "@type": "Offer", "priceCurrency": "USD", "itemOffered": { "@type": "Service", "name": "Nail Art", "description": "Hand-painted art, chrome, 3D details and custom designs tailored to your personality." } },
+              { "@type": "Offer", "priceCurrency": "USD", "price": "70", "itemOffered": { "@type": "Service", "name": "Volcano Pedicure", "description": "Spa-style pedicure with a fizzing volcano experience, soak, scrub, massage and gel polish." } },
+              { "@type": "Offer", "priceCurrency": "USD", "itemOffered": { "@type": "Service", "name": "French Manicure", "description": "Timeless nude base with crisp white tips, available as an add-on." } },
+              { "@type": "Offer", "priceCurrency": "USD", "price": "40", "itemOffered": { "@type": "Service", "name": "Russian Manicure", "description": "Meticulous dry manicure with detailed cuticle work using an electric file." } },
+              { "@type": "Offer", "priceCurrency": "USD", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "65", "priceCurrency": "USD" }, "itemOffered": { "@type": "Service", "name": "Acrylic Full Set", "description": "Durable, versatile nail enhancement adding length, strength and shape to natural nails." } },
+              { "@type": "Offer", "priceCurrency": "USD", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "55", "priceCurrency": "USD" }, "itemOffered": { "@type": "Service", "name": "Acrylic Fill In", "description": "Maintain an acrylic set by filling in the natural regrowth." } },
+              { "@type": "Offer", "priceCurrency": "USD", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "65", "priceCurrency": "USD" }, "itemOffered": { "@type": "Service", "name": "Builder Gel Full Set", "description": "Lightweight, durable gel for strengthening natural nails or creating extensions." } },
+              { "@type": "Offer", "priceCurrency": "USD", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "55", "priceCurrency": "USD" }, "itemOffered": { "@type": "Service", "name": "Builder Gel Fill In", "description": "Keep builder gel nails fresh by filling in the regrowth area." } },
+              { "@type": "Offer", "priceCurrency": "USD", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "80", "priceCurrency": "USD" }, "itemOffered": { "@type": "Service", "name": "Builder Gel + Russian Manicure", "description": "Full builder gel set combined with a detailed Russian manicure." } },
+              { "@type": "Offer", "priceCurrency": "USD", "price": "70", "itemOffered": { "@type": "Service", "name": "Luxury Manicure", "description": "Russian manicure and gel polish with exfoliation, hand massage, collagen mask and paraffin wax." } },
+              { "@type": "Offer", "priceCurrency": "USD", "price": "60", "itemOffered": { "@type": "Service", "name": "Basic Pedicure", "description": "Complete pedicure with soak, shaping, cuticle care, exfoliation, massage and gel polish." } },
+              { "@type": "Offer", "priceCurrency": "USD", "price": "65", "itemOffered": { "@type": "Service", "name": "Detox Pedicure", "description": "Purifying pedicure with cleansing minerals, exfoliation and a soothing massage." } },
+              { "@type": "Offer", "priceCurrency": "USD", "price": "70", "itemOffered": { "@type": "Service", "name": "Jelly Pedicure", "description": "Soothing jelly soak that hydrates and softens skin, with exfoliation and massage." } }
+            ]
+          }
+        }
+        </script>
     </head>
     <body class="flex flex-col text-text bg-primary justify-center items-center">
         <nav class="inline-flex fixed top-5 lg:right-5 z-10 justify-center items-center">
@@ -67,6 +113,7 @@
                     alt="Debh Nails logo"
                     fetchpriority="high"
                     decoding="async"
+                    width="390" height="390"
                     data-parallax-y="500"
                     data-start-point="top center">
                     
@@ -91,7 +138,8 @@
                             src="/pictures/services-1.webp" 
                             alt="Vibrant nail polish colours at Debh Nails, Louisville KY"
                             loading="lazy"
-                            decoding="async">
+                            decoding="async"
+                            width="700" height="933">
                             <span class="text-center text-h3">Colours</span>
                         </div>
                         <div class="flex flex-col items-end lg:space-y-5 lg:self-end lg:w-[550px] w-full lg:h-[380px] h-full overflow-hidden parallax-container" 
@@ -107,6 +155,7 @@
                             alt="Creative nail design at Debh Nails, Louisville KY"
                             loading="lazy"
                             decoding="async"
+                            width="480" height="640"
                             data-parallax-y="50"
                             data-start-point="top bottom">
                         </div>
@@ -118,6 +167,7 @@
                             alt="Nails that show your personality at Debh Nails, Louisville KY"
                             loading="lazy"
                             decoding="async"
+                            width="480" height="640"
                             data-parallax-y="100"
                             data-start-point="top bottom">
                             <span class="text-center text-h3 parallax-container"
@@ -183,7 +233,7 @@
                     <!-- About Deboritah -->
                      <section class="flex flex-col justify-center items-center w-full h-screen lg:my-20 my-5 gap-15 lg:px-40 px-10">
                         <div class="flex justify-center items-center max-w-md rounded-2xl overflow-hidden shadow-md shadow-black/40">
-                            <img class="w-full h-full object-cover" src="/pictures/deborah.jpg" alt="Deborah Rivero, nail artist and owner of Debh Nails in Louisville, KY" loading="lazy" decoding="async">
+                            <img class="w-full h-full object-cover" src="/pictures/deborah.jpg" alt="Deborah Rivero, nail artist and owner of Debh Nails in Louisville, KY" loading="lazy" decoding="async" width="500" height="531">
                         </div>
                         <p class="text-paragraph lg:w-3/4 w-full">In nail artistry, the quality of products used and the expertise and knowledge of the nail technician determine the excellence of the work. 
                             At my Louisville salon, I use only the finest products and have studied and continue to study at the best schools with maximum dedication, 
@@ -193,7 +243,7 @@
                 </main>
                 <footer class="flex justify-center items-center w-full h-[60dvh] md:space-x-20 space-x-5 bg-gradient-to-bl from-primary to-secondary">
                     <div class="flex justify-center items-center w-30 h-30 md:w-70 md:h-70">
-                        <img class="w-full h-full" src="/logos/logo.webp" alt="Debh Nails logo">    
+                        <img class="w-full h-full" src="/logos/logo.webp" alt="Debh Nails logo" width="390" height="390">    
                     </div>
                     <hr class="w-0.5 h-50 md:h-70 bg-gray-600">
                     <div class="flex md:w-60 md:h-60">
